@@ -1,0 +1,6 @@
+@Olx.API_HostAddress = http://localhost:5207
+
+GET {{Olx.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
