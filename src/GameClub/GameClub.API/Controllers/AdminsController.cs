@@ -28,6 +28,13 @@ public class AdminsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("{Id}")]
+    public async Task<IActionResult> GetByIdAsync(long Id)
+    {
+        var result = await _mediator.Send(new AdminGetByIdQuery() { Id = Id });
+        return Ok(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAsync(AdminCreateDto dto)
     {
@@ -44,8 +51,8 @@ public class AdminsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteAsync([FromForm] long Id)
+    [HttpDelete("{Id}")]
+    public async Task<IActionResult> DeleteAsync(long Id)
     {
         var result = await _mediator.Send(new AdminDeleteCommand() { Id = Id });
         return Ok(result);
