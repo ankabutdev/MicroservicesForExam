@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace GameClub.Application.UseCases.Admin.Commands;
+namespace GameClub.Application.UseCases.AdminCases.Commands;
 
 public class CreateAdminCommand : IRequest
 {

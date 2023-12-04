@@ -18,15 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Admin\Queries\" />
-    <Folder Include="UseCases\Computer\Commands\" />
-    <Folder Include="UseCases\Computer\Queries\" />
-    <Folder Include="UseCases\History\Commands\" />
-    <Folder Include="UseCases\History\Queries\" />
-    <Folder Include="UseCases\Player\Commands\" />
-    <Folder Include="UseCases\Player\Queries\" />
-    <Folder Include="UseCases\ScheduleOfChanges\Commands\" />
-    <Folder Include="UseCases\ScheduleOfChanges\Queries\" />
+    <Folder Include="UseCases\AdminCases\Queries\" />
+    <Folder Include="UseCases\ComputerCases\Commands\" />
+    <Folder Include="UseCases\ComputerCases\Queries\" />
+    <Folder Include="UseCases\HistoryCases\Commands\" />
+    <Folder Include="UseCases\HistoryCases\Queries\" />
+    <Folder Include="UseCases\PlayerCases\Commands\" />
+    <Folder Include="UseCases\PlayerCases\Queries\" />
+    <Folder Include="UseCases\ScheduleOfChangesCases\Commands\" />
+    <Folder Include="UseCases\ScheduleOfChangesCases\Queries\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using GameClub.Application.UseCases.Admin.Commands;
+﻿using GameClub.Application.UseCases.AdminCases.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

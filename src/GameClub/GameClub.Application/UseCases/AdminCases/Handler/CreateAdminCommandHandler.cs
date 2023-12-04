@@ -1,5 +1,5 @@
 ﻿using GameClub.Application.Abstractions;
-using GameClub.Application.UseCases.Admin.Commands;
+using GameClub.Application.UseCases.AdminCases.Commands;
 using MediatR;
 
 namespace GameClub.Application.UseCases.Admin.Handler;
