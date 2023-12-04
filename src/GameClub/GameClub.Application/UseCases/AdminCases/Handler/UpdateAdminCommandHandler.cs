@@ -5,7 +5,7 @@ using MediatR;
 
 namespace GameClub.Application.UseCases.AdminCases.Handler;
 
-public class UpdateAdminCommandHandler : AsyncRequestHandler<UpdateAdminCommand>
+public class UpdateAdminCommandHandler : IRequestHandler<UpdateAdminCommand, bool>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -17,17 +17,25 @@ public class UpdateAdminCommandHandler : AsyncRequestHandler<UpdateAdminCommand>
         this._mapper = mapper;
     }
 
-    protected override async Task Handle(UpdateAdminCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(UpdateAdminCommand request, CancellationToken cancellationToken)
     {
-        var admin = _context.Admins
+        try
+        {
+            var admin = _context.Admins
             .FirstOrDefault(x => x.Id == request.Id);
 
-        if (admin is null)
-            throw new ArgumentNullException(nameof(admin));
+            if (admin is null)
+                throw new ArgumentNullException(nameof(admin));
 
-        _mapper.Map(request, admin);
+            _mapper.Map(request, admin);
 
-        _context.Admins.Update(admin);
-        await _context.SaveChangesAsync(cancellationToken);
+            _context.Admins.Update(admin);
+            var result = await _context.SaveChangesAsync(cancellationToken);
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

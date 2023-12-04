@@ -6,7 +6,7 @@ using MediatR;
 
 namespace GameClub.Application.UseCases.AdminCases.Handler;
 
-public class CreateAdminCommandHandler : AsyncRequestHandler<CreateAdminCommand>
+public class CreateAdminCommandHandler : IRequestHandler<CreateAdminCommand, bool>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -18,12 +18,19 @@ public class CreateAdminCommandHandler : AsyncRequestHandler<CreateAdminCommand>
         _mapper = mapper;
     }
 
-    protected override async Task Handle(CreateAdminCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(CreateAdminCommand request, CancellationToken cancellationToken)
     {
-        var entity = _mapper.Map<Admin>(request);
+        try
+        {
+            var entity = _mapper.Map<Admin>(request);
 
-        await _context.Admins.AddAsync(entity);
-        await _context.SaveChangesAsync(cancellationToken);
-
+            await _context.Admins.AddAsync(entity);
+            var result = await _context.SaveChangesAsync(cancellationToken);
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace GameClub.Application.UseCases.AdminCases.Commands;
 
-public class CreateAdminCommand : IRequest
+public class CreateAdminCommand : IRequest<bool>
 {
     public string Name { get; set; }
 

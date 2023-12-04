@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GameClub.Application.UseCases.AdminCases.Commands;
+using GameClub.Application.UseCases.AdminCases.Queries;
 using GameClub.Domain.DTOs.Admins;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,20 +21,33 @@ public class AdminsController : ControllerBase
         _mapper = mapper;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        var result = await _mediator.Send(new AdminGetAllQuery());
+        return Ok(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAsync(AdminCreateDto dto)
     {
         var adminCommand = _mapper.Map<CreateAdminCommand>(dto);
-        await _mediator.Send(adminCommand);
-        return Ok();
+        var result = await _mediator.Send(adminCommand);
+        return Ok(result);
     }
 
     [HttpPut]
     public async Task<IActionResult> UpdateAsync(AdminUpdateDto dto)
     {
         var updateAdmin = _mapper.Map<UpdateAdminCommand>(dto);
-        await Console.Out.WriteLineAsync(updateAdmin.Password);
-        await _mediator.Send(updateAdmin);
-        return Ok();
+        var result = await _mediator.Send(updateAdmin);
+        return Ok(result);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromForm] long Id)
+    {
+        var result = await _mediator.Send(new AdminDeleteCommand() { Id = Id });
+        return Ok(result);
     }
 }
