@@ -21,5 +21,5 @@ public class Computer : BaseEntity
 
     [ForeignKey("HistoryId")]
     public History History { get; set; }
-}
+
 }
