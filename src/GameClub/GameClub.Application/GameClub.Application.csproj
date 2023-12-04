@@ -7,12 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GameClub.Domain\GameClub.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\Admin\Queries\" />
+    <Folder Include="UseCases\Computer\Commands\" />
+    <Folder Include="UseCases\Computer\Queries\" />
+    <Folder Include="UseCases\History\Commands\" />
+    <Folder Include="UseCases\History\Queries\" />
+    <Folder Include="UseCases\Player\Commands\" />
+    <Folder Include="UseCases\Player\Queries\" />
+    <Folder Include="UseCases\ScheduleOfChanges\Commands\" />
+    <Folder Include="UseCases\ScheduleOfChanges\Queries\" />
   </ItemGroup>
 
 </Project>
