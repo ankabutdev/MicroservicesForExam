@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GameClub.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231204105005_init")]
-    partial class init
+    [Migration("20231205133813_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,18 +54,13 @@ namespace GameClub.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("HistoryId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<double>("PriceOfHour")
                         .HasColumnType("double precision");
-
-                    b.Property<long>("ScheduleOfChangesId")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("Version")
                         .IsRequired()
@@ -73,43 +68,10 @@ namespace GameClub.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HistoryId");
-
-                    b.HasIndex("ScheduleOfChangesId");
+                    b.HasIndex("Version")
+                        .IsUnique();
 
                     b.ToTable("Computers");
-                });
-
-            modelBuilder.Entity("GameClub.Domain.Entities.History", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long?>("AdminId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ComputerId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdminId");
-
-                    b.ToTable("Histories");
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.Player", b =>
@@ -133,9 +95,6 @@ namespace GameClub.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("ScheduleOfChangesId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -143,7 +102,8 @@ namespace GameClub.Infrastructure.Migrations
 
                     b.HasIndex("ComputerId");
 
-                    b.HasIndex("ScheduleOfChangesId");
+                    b.HasIndex("NickName")
+                        .IsUnique();
 
                     b.ToTable("Players");
                 });
@@ -156,14 +116,15 @@ namespace GameClub.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long?>("AdminId")
+                    b.Property<long>("AdminId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
-                    b.Property<long>("HistoryId")
+                    b.Property<long>("PlayerId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Status")
@@ -176,35 +137,9 @@ namespace GameClub.Infrastructure.Migrations
 
                     b.HasIndex("AdminId");
 
-                    b.HasIndex("HistoryId");
+                    b.HasIndex("PlayerId");
 
                     b.ToTable("ScheduleOfChanges");
-                });
-
-            modelBuilder.Entity("GameClub.Domain.Entities.Computer", b =>
-                {
-                    b.HasOne("GameClub.Domain.Entities.History", "History")
-                        .WithMany("Computers")
-                        .HasForeignKey("HistoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GameClub.Domain.Entities.ScheduleOfChanges", "ScheduleOfChanges")
-                        .WithMany("Computers")
-                        .HasForeignKey("ScheduleOfChangesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("History");
-
-                    b.Navigation("ScheduleOfChanges");
-                });
-
-            modelBuilder.Entity("GameClub.Domain.Entities.History", b =>
-                {
-                    b.HasOne("GameClub.Domain.Entities.Admin", null)
-                        .WithMany("Histories")
-                        .HasForeignKey("AdminId");
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.Player", b =>
@@ -215,36 +150,30 @@ namespace GameClub.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GameClub.Domain.Entities.ScheduleOfChanges", "ScheduleOfChanges")
-                        .WithMany("Players")
-                        .HasForeignKey("ScheduleOfChangesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Computer");
-
-                    b.Navigation("ScheduleOfChanges");
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.ScheduleOfChanges", b =>
                 {
-                    b.HasOne("GameClub.Domain.Entities.Admin", null)
+                    b.HasOne("GameClub.Domain.Entities.Admin", "Admin")
                         .WithMany("ScheduleOfChanges")
-                        .HasForeignKey("AdminId");
-
-                    b.HasOne("GameClub.Domain.Entities.History", "History")
-                        .WithMany("ScheduleOfChanges")
-                        .HasForeignKey("HistoryId")
+                        .HasForeignKey("AdminId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("History");
+                    b.HasOne("GameClub.Domain.Entities.Player", "Player")
+                        .WithMany("ScheduleOfChanges")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Admin");
+
+                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.Admin", b =>
                 {
-                    b.Navigation("Histories");
-
                     b.Navigation("ScheduleOfChanges");
                 });
 
@@ -253,18 +182,9 @@ namespace GameClub.Infrastructure.Migrations
                     b.Navigation("Players");
                 });
 
-            modelBuilder.Entity("GameClub.Domain.Entities.History", b =>
+            modelBuilder.Entity("GameClub.Domain.Entities.Player", b =>
                 {
-                    b.Navigation("Computers");
-
                     b.Navigation("ScheduleOfChanges");
-                });
-
-            modelBuilder.Entity("GameClub.Domain.Entities.ScheduleOfChanges", b =>
-                {
-                    b.Navigation("Computers");
-
-                    b.Navigation("Players");
                 });
 #pragma warning restore 612, 618
         }
