@@ -22,10 +22,6 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
-    <Folder Include="UseCases\PlayerCases\Commands\" />
-    <Folder Include="UseCases\PlayerCases\Queries\" />
-    <Folder Include="UseCases\ScheduleOfChangesCases\Commands\" />
-    <Folder Include="UseCases\ScheduleOfChangesCases\Queries\" />
   </ItemGroup>
 
 </Project>
