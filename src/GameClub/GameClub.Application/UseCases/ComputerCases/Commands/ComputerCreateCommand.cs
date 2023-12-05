@@ -10,6 +10,4 @@ public class ComputerCreateCommand : IRequest<bool>
 
     public double PriceOfHour { get; set; }
 
-    public long ScheduleOfChangesId { get; set; }
-
 }
