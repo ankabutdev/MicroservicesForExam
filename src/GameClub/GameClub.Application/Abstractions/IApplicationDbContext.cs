@@ -13,7 +13,5 @@ public interface IApplicationDbContext
 
     DbSet<Computer> Computers { get; set; }
 
-    DbSet<History> Histories { get; set; }
-
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
