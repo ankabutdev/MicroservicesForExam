@@ -30,6 +30,7 @@ public class ComputerConfiguration : IEntityTypeConfiguration<Computer>
             .IsRequired();
 
         builder.HasMany(x => x.Players)
-            .WithOne(x => x.Computer);
+            .WithOne(x => x.Computer)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
