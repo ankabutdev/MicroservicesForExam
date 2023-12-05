@@ -35,6 +35,16 @@ public class AdminsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("name")]
+    public async Task<IActionResult> GetByNameAsync(string name)
+    {
+        var result = await _mediator
+            .Send(new AdminGetByNameQuery()
+            { Name = name });
+
+        return Ok(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAsync(AdminCreateDto dto)
     {
