@@ -20,7 +20,8 @@ public class ScheduleOfChangesConfiguration : IEntityTypeConfiguration<ScheduleO
             .HasMaxLength(256);
 
         builder.HasOne(x => x.Admin)
-            .WithMany(x => x.ScheduleOfChanges);
+            .WithMany(x => x.ScheduleOfChanges)
+            .OnDelete(DeleteBehavior.Cascade);
 
     }
 }

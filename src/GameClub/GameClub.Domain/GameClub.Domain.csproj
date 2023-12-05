@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\ScheduleOfChanges\" />
+    <Folder Include="Exceptions\Players\" />
+  </ItemGroup>
+
 </Project>
