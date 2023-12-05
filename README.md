@@ -37,6 +37,7 @@ Loyiha kodlarini o'rnatish uchun quyidagi bosqichlarni bajarishni unutmang:
 1. **Docker va Docker Compose o'rnatish**
    ```bash
    docker-compose up -d
-```bash
-docker-compose exec [xozircha yo'q] dotnet run
+2 **Docker composeni ishga tushurish**
+   ```bash
+   docker-compose exec [xozircha yo'q] dotnet run
 
