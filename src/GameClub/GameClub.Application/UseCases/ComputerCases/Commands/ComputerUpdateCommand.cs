@@ -12,5 +12,4 @@ public class ComputerUpdateCommand : IRequest<bool>
 
     public double PriceOfHour { get; set; }
 
-    public long ScheduleOfChangesId { get; set; }
 }
