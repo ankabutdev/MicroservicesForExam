@@ -20,6 +20,7 @@ public class AdminConfiguration : IEntityTypeConfiguration<Admin>
             .IsRequired();
 
         builder.HasMany(x => x.ScheduleOfChanges)
-            .WithOne(x => x.Admin);
+            .WithOne(x => x.Admin)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
