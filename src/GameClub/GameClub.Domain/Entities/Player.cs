@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GameClub.Domain.Entities;
+﻿namespace GameClub.Domain.Entities;
 
 public class Player : BaseEntity
 {
@@ -14,11 +12,7 @@ public class Player : BaseEntity
 
     public long ComputerId { get; set; }
 
-    [ForeignKey(nameof(ComputerId))]
     public Computer Computer { get; set; }
 
-    public long ScheduleOfChangesId { get; set; }
-
-    [ForeignKey(nameof(ScheduleOfChangesId))]
-    public ScheduleOfChanges ScheduleOfChanges { get; set; }
+    public ICollection<ScheduleOfChanges> ScheduleOfChanges { get; set; }
 }
