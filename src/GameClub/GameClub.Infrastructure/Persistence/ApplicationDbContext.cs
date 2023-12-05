@@ -18,8 +18,6 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<Computer> Computers { get; set; }
 
-    public DbSet<History> Histories { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
