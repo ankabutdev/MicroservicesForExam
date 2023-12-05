@@ -17,6 +17,7 @@ public class PlayerConfiguration : IEntityTypeConfiguration<Player>
             .IsUnique();
 
         builder.HasMany(x => x.ScheduleOfChanges)
-            .WithOne(x => x.Player);
+            .WithOne(x => x.Player)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
