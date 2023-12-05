@@ -8,6 +8,4 @@ public class Admin : BaseEntity
 
     public IEnumerable<ScheduleOfChanges> ScheduleOfChanges { get; set; }
 
-    public IEnumerable<History> Histories { get; set; }
-
 }
