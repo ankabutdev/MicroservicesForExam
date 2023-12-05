@@ -17,9 +17,4 @@ public class Computer : BaseEntity
     [ForeignKey("ScheduleOfChangesId")]
     public ScheduleOfChanges ScheduleOfChanges { get; set; }
 
-    public long HistoryId { get; set; }
-
-    [ForeignKey("HistoryId")]
-    public History History { get; set; }
-
 }
