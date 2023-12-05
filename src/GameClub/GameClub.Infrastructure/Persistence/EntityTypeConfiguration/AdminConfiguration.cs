@@ -10,10 +10,16 @@ public class AdminConfiguration : IEntityTypeConfiguration<Admin>
     {
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id)
+            .UseIdentityColumn();
+
         builder.Property(x => x.Name)
             .IsRequired();
 
         builder.Property(x => x.Password)
             .IsRequired();
+
+        builder.HasMany(x => x.ScheduleOfChanges)
+            .WithOne(x => x.Admin);
     }
 }
