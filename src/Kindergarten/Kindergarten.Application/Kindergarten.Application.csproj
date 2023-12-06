@@ -18,11 +18,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Kindergarten.Domain\Kindergarten.Domain.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="UseCases\TeacherCase\Commands\" />
-    <Folder Include="UseCases\TeacherCase\Handlers\" />
-    <Folder Include="UseCases\TeacherCase\Queries\" />
-  </ItemGroup>
 
 </Project>
