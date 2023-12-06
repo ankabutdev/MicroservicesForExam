@@ -4,6 +4,8 @@ namespace GameClub.Domain.DTOs.ScheduleOfChanges;
 
 public class ScheduleOfChangesUpdateDto
 {
+    public long Id { get; set; }
+
     public string Description { get; set; }
 
     public double TotalPrice { get; set; }

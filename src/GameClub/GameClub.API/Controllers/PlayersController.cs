@@ -74,7 +74,7 @@ public class PlayersController : ControllerBase
         var result = await _mediator
             .Send(
             new PlayerDeleteCommand()
-            {
+                                                                                                                                                 {
                 Id = Id
             });
 

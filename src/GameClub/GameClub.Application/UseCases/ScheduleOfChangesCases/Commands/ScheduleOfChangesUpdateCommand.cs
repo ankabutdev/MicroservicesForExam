@@ -5,6 +5,8 @@ namespace GameClub.Application.UseCases.ScheduleOfChangesCases.Commands;
 
 public class ScheduleOfChangesUpdateCommand : IRequest<bool>
 {
+    public long Id { get; set; }
+
     public string Description { get; set; }
 
     public double TotalPrice { get; set; }

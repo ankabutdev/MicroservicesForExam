@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-
-namespace GameClub.Domain.DTOs.Computers;
+﻿namespace GameClub.Domain.DTOs.Computers;
 
 public class ComputerUpdateDto
 {
@@ -12,5 +10,4 @@ public class ComputerUpdateDto
 
     public double PriceOfHour { get; set; }
 
-    public long ScheduleOfChangesId { get; set; }
 }
