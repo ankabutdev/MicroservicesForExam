@@ -1,6 +1,6 @@
 # Mening Loyiham
 
-Bu repositoriya mening 100 Days of Code chellendjida ishlashimning natijalarini saqlash uchun yaratilgan. Men endi quyidagi texnologiyalardan foydalanmoqdaman:
+Bu mening 100 Days of Code chellendjida qatnashish va imtihonga tayyorlanish uchun yaratilgan. Men endi quyidagi texnologiyalardan foydalanmoqdaman:
 
 ## Texnologiyalar
 
@@ -24,11 +24,12 @@ Bu repositoriya mening 100 Days of Code chellendjida ishlashimning natijalarini 
 
 ## Loyiha Haqida
 
-Loyiha quyidagi funksiyalarga ega:
+Loyiha quyidagi Servicelarga ega:
 
-1. **Image upload**
-2. **---**
-3. **--**
+1. **Game-Club**
+2. **Nikoh-FHDYO**
+3. **OLX**
+4. **Kindergarten**
 
 ## Loyiha O'rnatish
 
