@@ -1,6 +1,6 @@
 # Mening Loyiham
 
-Bu repositoriya mening 100 Days of Code chellendjida ishlashimning natijalarini saqlash uchun yaratilgan. Men endi quyidagi texnologiyalardan foydalanmoqdaman:
+Bu mening 100 Days of Code chellendjida qatnashish va imtihonga tayyorlanish uchun yaratilgan. Men endi quyidagi texnologiyalardan foydalanmoqdaman:
 
 ## Texnologiyalar
 
