@@ -2,6 +2,7 @@
 using Kindergarten.Application.UseCases.StudentCase.Queries;
 using Kindergarten.Domain.Entities.Students;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kindergarten.Application.UseCases.StudentCase.Handlers.Q;
 
