@@ -24,11 +24,12 @@ Bu mening 100 Days of Code chellendjida qatnashish va imtihonga tayyorlanish uch
 
 ## Loyiha Haqida
 
-Loyiha quyidagi funksiyalarga ega:
+Loyiha quyidagi Servicelarga ega:
 
-1. **Image upload**
-2. **---**
-3. **--**
+1. **Game-Club**
+2. **Nikoh-FHDYO**
+3. **OLX**
+4. **Kindergarten**
 
 ## Loyiha O'rnatish
 
