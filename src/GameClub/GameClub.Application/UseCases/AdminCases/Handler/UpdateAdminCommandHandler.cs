@@ -2,6 +2,7 @@
 using GameClub.Application.Abstractions;
 using GameClub.Application.UseCases.AdminCases.Commands;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameClub.Application.UseCases.AdminCases.Handler;
 
@@ -21,8 +22,8 @@ public class UpdateAdminCommandHandler : IRequestHandler<UpdateAdminCommand, boo
     {
         try
         {
-            var admin = _context.Admins
-            .FirstOrDefault(x => x.Id == request.Id);
+            var admin = await _context.Admins
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
 
             if (admin is null)
                 throw new ArgumentNullException(nameof(admin));
