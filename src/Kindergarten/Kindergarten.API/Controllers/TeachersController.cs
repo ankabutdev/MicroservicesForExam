@@ -2,8 +2,10 @@
 using Kindergarten.Application.UseCases.TeacherCase.Commands;
 using Kindergarten.Application.UseCases.TeacherCase.Queries;
 using Kindergarten.Domain.Dtos.Teachers;
+using Kindergarten.Domain.Entities.Teachers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Kindergarten.API.Controllers;
 
@@ -13,18 +15,33 @@ public class TeachersController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
+    private readonly IMemoryCache _cache;
 
-    public TeachersController(IMapper mapper, IMediator mediator)
+    public TeachersController(IMapper mapper, IMediator mediator, IMemoryCache cache)
     {
         _mapper = mapper;
         _mediator = mediator;
+        _cache = cache;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        var result = await _mediator
-            .Send(new GetAllTeacherQuery());
+        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        {
+            var teachers = (IEnumerable<Teacher>)cachedData!;
+            return Ok(teachers);
+        }
+
+        var result = await _mediator.Send(new GetAllTeacherQuery());
+
+        var cacheEntryOptions = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
+            SlidingExpiration = TimeSpan.FromSeconds(20)
+        };
+
+        _cache.Set("AllTeachers", result, cacheEntryOptions);
 
         return Ok(result);
     }
