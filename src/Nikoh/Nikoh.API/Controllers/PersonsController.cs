@@ -48,10 +48,11 @@ public class PersonsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(UpdatePersonDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, UpdatePersonDto dto)
     {
         var person = _mapper.Map<UpdatePersonCmd>(dto);
+        person.Id = Id;
         var result = await _mediator.Send(person);
         return Ok(result);
     }
