@@ -1,3 +1,4 @@
+using Gateway.API;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -5,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddHostedService<BeckGroundMicroService>();
 
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
