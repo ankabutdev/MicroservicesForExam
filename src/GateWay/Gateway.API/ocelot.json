@@ -1,0 +1,257 @@
+{
+  "Routes": [
+    {
+      // GameClub.API
+      "DownstreamPathTemplate": "/api/admins/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/admins/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/admins",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/admins",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    }, //---
+    {
+      // GameClub.API
+      "DownstreamPathTemplate": "/api/computers/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/computers/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/computers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/computers",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // GameClub.API
+      "DownstreamPathTemplate": "/api/players/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/players/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/players",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/players",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // GameClub.API
+      "DownstreamPathTemplate": "/api/sochs/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/sochs/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/sochs",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gameclub.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/sochs",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Kindergarten.API
+      "DownstreamPathTemplate": "/api/kgadmins/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/kgadmins/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/kgadmins",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/kgadmins",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Kindergarten.API
+      "DownstreamPathTemplate": "/api/employees/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/employees/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/employees",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/employees",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Kindergarten.API
+      "DownstreamPathTemplate": "/api/groups/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/groups/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/groups",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/groups",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Kindergarten.API
+      "DownstreamPathTemplate": "/api/parents/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/parents/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/parents",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/parents",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Kindergarten.API
+      "DownstreamPathTemplate": "/api/students/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/students/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/students",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/students",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Kindergarten.API
+      "DownstreamPathTemplate": "/api/teachers/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/teachers/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/teachers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kindergarten.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/teachers",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:9999"
+  }
+}
