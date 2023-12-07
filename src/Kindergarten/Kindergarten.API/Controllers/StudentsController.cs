@@ -57,11 +57,11 @@ public class StudentsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(UpdateStudentDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, UpdateStudentDto dto)
     {
         var student = _mapper.Map<UpdateStudentCmd>(dto);
-
+        student.Id = Id;
         var result = await _mediator.Send(student);
 
         return Ok(result);

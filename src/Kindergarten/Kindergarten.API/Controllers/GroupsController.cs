@@ -56,11 +56,11 @@ public class GroupsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(GroupUpdateDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, GroupUpdateDto dto)
     {
         var group = _mapper.Map<UpdateGroupCmd>(dto);
-
+        group.Id = Id;
         var result = await _mediator.Send(group);
 
         return Ok(result);

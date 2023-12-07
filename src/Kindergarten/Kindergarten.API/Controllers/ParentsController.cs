@@ -49,11 +49,11 @@ public class ParentsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(UpdateParentDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, UpdateParentDto dto)
     {
         var parent = _mapper.Map<UpdateParentCmd>(dto);
-
+        parent.Id = Id;
         var result = await _mediator.Send(parent);
 
         return Ok(result);
