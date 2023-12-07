@@ -58,11 +58,11 @@ public class PlayersController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(PlayerUpdateDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, PlayerUpdateDto dto)
     {
         var player = _mapper.Map<PlayerUpdateCommand>(dto);
-
+        player.Id = Id;
         var result = await _mediator.Send(player);
 
         return Ok(result);
@@ -74,7 +74,7 @@ public class PlayersController : ControllerBase
         var result = await _mediator
             .Send(
             new PlayerDeleteCommand()
-                                                                                                                                                 {
+            {
                 Id = Id
             });
 
