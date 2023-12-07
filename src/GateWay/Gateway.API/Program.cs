@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddHostedService<BeckGroundMicroService>();
+builder.Services.AddHostedService<BackGroundMicroService>();
 
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
