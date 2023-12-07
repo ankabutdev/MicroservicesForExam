@@ -10,9 +10,12 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        var dockerConnection = configuration.GetConnectionString("DockerConnection");
+        var defaultConnection = configuration.GetConnectionString("DefaultConnection");
+
         services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            options.UseSqlServer(dockerConnection);
         });
 
         return services;
