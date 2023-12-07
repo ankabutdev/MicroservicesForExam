@@ -7,11 +7,11 @@ namespace Nikoh.Application.Abstractions;
 
 public interface IAppDbContext
 {
-    public DbSet<Person> People { get; set; }
+    DbSet<Person> People { get; set; }
 
-    public DbSet<Marriage> Marriages { get; set; }
+    DbSet<Marriage> Marriages { get; set; }
 
-    public DbSet<Requirement> Requirements { get; set; }
+    DbSet<Requirement> Requirements { get; set; }
 
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+    public ValueTask<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
