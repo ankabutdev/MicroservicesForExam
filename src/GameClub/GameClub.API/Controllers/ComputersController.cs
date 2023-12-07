@@ -49,11 +49,11 @@ public class ComputersController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(ComputerUpdateDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, ComputerUpdateDto dto)
     {
         var computer = _mapper.Map<ComputerUpdateCommand>(dto);
-
+        computer.Id = Id;
         var result = await _mediator.Send(computer);
 
         return Ok(result);
