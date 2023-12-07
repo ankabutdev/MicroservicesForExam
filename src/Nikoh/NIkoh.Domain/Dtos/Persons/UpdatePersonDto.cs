@@ -1,9 +1,11 @@
 ﻿using NIkoh.Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace NIkoh.Domain.Dtos.Persons;
 
 public class UpdatePersonDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string FirstName { get; set; }
