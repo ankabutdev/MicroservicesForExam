@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kindergarten.API.Controllers;
 
-[Route("api/admins")]
+[Route("api/kgadmins")]
 [ApiController]
 public class AdminsController : ControllerBase
 {
