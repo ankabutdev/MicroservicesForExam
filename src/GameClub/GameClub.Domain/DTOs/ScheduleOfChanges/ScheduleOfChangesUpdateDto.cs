@@ -1,9 +1,11 @@
 ﻿using GameClub.Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace GameClub.Domain.DTOs.ScheduleOfChanges;
 
 public class ScheduleOfChangesUpdateDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string Description { get; set; }
