@@ -23,12 +23,13 @@ public class CreateReqCmdHandler : IRequestHandler<CreateReqCmd, bool>
         {
             var entity = _mapper.Map<Requirement>(request);
 
-            await _context.Requirements.AddAsync(entity);
+            await _context.Requirements.AddAsync(entity, cancellationToken);
             var result = await _context.SaveChangesAsync(cancellationToken);
             return result > 0;
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
             return false;
         }
     }

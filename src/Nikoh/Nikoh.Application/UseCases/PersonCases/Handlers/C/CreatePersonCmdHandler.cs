@@ -22,7 +22,7 @@ public class CreatePersonCmdHandler : IRequestHandler<CreatePersonCmd, bool>
         try
         {
             var entity = _mapper.Map<Person>(request);
-
+            
             await _context.People.AddAsync(entity);
             var result = await _context.SaveChangesAsync(cancellationToken);
             return result > 0;
