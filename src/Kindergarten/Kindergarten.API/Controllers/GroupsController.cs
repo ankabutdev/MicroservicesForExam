@@ -2,8 +2,10 @@
 using Kindergarten.Application.UseCases.GroupCase.Commands;
 using Kindergarten.Application.UseCases.GroupCase.Queries;
 using Kindergarten.Domain.Dtos.Groups;
+using Kindergarten.Domain.Entities.Groups;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Kindergarten.API.Controllers;
 
@@ -13,18 +15,33 @@ public class GroupsController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
+    private readonly IMemoryCache _cache;
 
-    public GroupsController(IMapper mapper, IMediator mediator)
+    public GroupsController(IMapper mapper, IMediator mediator, IMemoryCache cache)
     {
         _mapper = mapper;
         _mediator = mediator;
+        _cache = cache;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        var result = await _mediator
-            .Send(new GetAllGroupQuery());
+        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        {
+            var group = (IEnumerable<Group>)cachedData!;
+            return Ok(group);
+        }
+
+        var result = await _mediator.Send(new GetAllGroupQuery());
+
+        var cacheEntryOptions = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
+            SlidingExpiration = TimeSpan.FromSeconds(20)
+        };
+
+        _cache.Set("AllGroups", result, cacheEntryOptions);
 
         return Ok(result);
     }
