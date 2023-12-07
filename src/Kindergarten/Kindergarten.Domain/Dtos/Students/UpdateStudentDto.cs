@@ -1,9 +1,11 @@
 ﻿using Kindergarten.Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace Kindergarten.Domain.Dtos.Students;
 
 public class UpdateStudentDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string FullName { get; set; }
