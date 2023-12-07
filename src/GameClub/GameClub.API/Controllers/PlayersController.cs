@@ -2,8 +2,10 @@
 using GameClub.Application.UseCases.PlayerCases.Commands;
 using GameClub.Application.UseCases.PlayerCases.Queries;
 using GameClub.Domain.DTOs.Players;
+using GameClub.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace GameClub.API.Controllers;
 
@@ -13,21 +15,37 @@ public class PlayersController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
+    private readonly IMemoryCache _cache;
 
     public PlayersController(IMapper mapper,
-        IMediator mediator)
+        IMediator mediator,
+        IMemoryCache cache)
     {
         _mapper = mapper;
         _mediator = mediator;
+        _cache = cache;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        var players = await _mediator
-            .Send(new PlayerGetAllQuery());
+        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        {
+            var player = (IEnumerable<Player>)cachedData!;
+            return Ok(player);
+        }
 
-        return Ok(players);
+        var result = await _mediator.Send(new PlayerGetAllQuery());
+
+        var cacheEntryOptions = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
+            SlidingExpiration = TimeSpan.FromSeconds(20)
+        };
+
+        _cache.Set("AllPlayers", result, cacheEntryOptions);
+
+        return Ok(result);
     }
 
     [HttpGet("nickname")]
