@@ -7,12 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    string connection = builder.Configuration.GetConnectionString("LocalDatabase") ?? "redis:6379,allowAdmin=true";
-    options.Configuration = connection;
-    options.InstanceName = "gameClublocalredis";
-});
+builder.Services.AddMemoryCache();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
