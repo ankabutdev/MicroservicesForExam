@@ -6,6 +6,8 @@ using Kindergarten.Domain.Entities.Parents;
 using Kindergarten.Domain.Entities.Students;
 using Kindergarten.Domain.Entities.Teachers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Reflection;
 
 namespace Kindergarten.Infrastructure.Persistence;
@@ -13,7 +15,28 @@ namespace Kindergarten.Infrastructure.Persistence;
 public class AppDbContext : DbContext, IAppDbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
-       : base(options) { }
+       : base(options) 
+    {
+        var databaseCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
+        try
+        {
+            if (databaseCreator is null)
+            {
+                throw new Exception("Database Not Found!");
+            }
+
+            if (!databaseCreator.CanConnect())
+                databaseCreator.CreateAsync();
+
+            if (!databaseCreator.HasTables())
+                databaseCreator.CreateTablesAsync();
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
 
     public DbSet<Admin> Admins { get; set; }
 
