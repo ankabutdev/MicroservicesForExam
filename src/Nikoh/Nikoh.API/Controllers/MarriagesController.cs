@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Nikoh.Application.UseCases.MarriageCases.Commands;
 using Nikoh.Application.UseCases.MarriageCases.Queris;
 using NIkoh.Domain.Dtos.Marriages;
+using NIkoh.Domain.Entities.Marriages;
 
 namespace Nikoh.API.Controllers;
 
@@ -13,18 +15,33 @@ public class MarriagesController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
+    private readonly IMemoryCache _cache;
 
-    public MarriagesController(IMapper mapper, IMediator mediator)
+    public MarriagesController(IMapper mapper, IMediator mediator, IMemoryCache cache)
     {
         _mapper = mapper;
         _mediator = mediator;
+        _cache = cache;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        var result = await _mediator
-            .Send(new GetAllMarriageQuery());
+        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        {
+            var marriages = (IEnumerable<Marriage>)cachedData!;
+            return Ok(marriages);
+        }
+
+        var result = await _mediator.Send(new GetAllMarriageQuery());
+
+        var cacheEntryOptions = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
+            SlidingExpiration = TimeSpan.FromSeconds(20)
+        };
+
+        _cache.Set("AllMarriages", result, cacheEntryOptions);
 
         return Ok(result);
     }
