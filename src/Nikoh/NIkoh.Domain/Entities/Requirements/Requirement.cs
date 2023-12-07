@@ -1,6 +1,4 @@
-﻿using NIkoh.Domain.Entities.Marriages;
-
-namespace NIkoh.Domain.Entities.Requirements;
+﻿namespace NIkoh.Domain.Entities.Requirements;
 
 public class Requirement : BaseEntity
 {
