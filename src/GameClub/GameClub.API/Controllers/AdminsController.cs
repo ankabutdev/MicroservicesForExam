@@ -53,10 +53,11 @@ public class AdminsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(AdminUpdateDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, AdminUpdateDto dto)
     {
         var updateAdmin = _mapper.Map<UpdateAdminCommand>(dto);
+        updateAdmin.Id = Id;
         var result = await _mediator.Send(updateAdmin);
         return Ok(result);
     }
