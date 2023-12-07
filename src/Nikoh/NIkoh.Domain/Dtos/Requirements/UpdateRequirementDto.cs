@@ -1,7 +1,10 @@
-﻿namespace NIkoh.Domain.Dtos.Requirements;
+﻿using System.Text.Json.Serialization;
+
+namespace NIkoh.Domain.Dtos.Requirements;
 
 public class UpdateRequirementDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string Title { get; set; }
