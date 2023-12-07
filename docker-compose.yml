@@ -1,0 +1,60 @@
+version: '3.4'
+
+services:
+
+  sqldata:
+    container_name: microservices-sqldata
+    volumes:
+      - ./db:/var/opt/mssql/data
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      - SA_PASSWORD=YourStrong@Passw0rd
+      - ACCEPT_EULA=Y
+    networks:
+      - backend
+    ports:
+      - 6767:1433
+
+  gameclub.api:
+    image: ${DOCKER_REGISTRY-}gameclubapi
+    build:
+      context: .
+      dockerfile: src/GameClub/GameClub.API/Dockerfile
+    networks:
+      - backend
+    depends_on:
+      - sqldata
+
+  kindergarten.api:
+    image: ${DOCKER_REGISTRY-}kindergartenapi
+    build:
+      context: .
+      dockerfile: src/Kindergarten/Kindergarten.API/Dockerfile
+    networks:
+      - backend
+    depends_on:
+      - sqldata
+
+  nikoh.api:
+    image: ${DOCKER_REGISTRY-}nikohapi
+    build:
+      context: .
+      dockerfile: src/Nikoh/Nikoh.API/Dockerfile
+    networks:
+      - backend
+    depends_on:
+      - sqldata
+
+  gateway.api:
+    image: ${DOCKER_REGISTRY-}gatewayapi
+    build:
+      context: .
+      dockerfile: src/GateWay/Gateway.API/Dockerfile
+    networks:
+     - backend
+    ports:
+     - 7676:8080
+
+
+networks:
+  backend:

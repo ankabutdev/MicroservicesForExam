@@ -13,37 +13,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameClub", "GameClub", "{E5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kindergarten", "Kindergarten", "{90354229-EE0C-4667-AFE9-06317ED3D98A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClub.API", "src\GameClub\GameClub.API\GameClub.API.csproj", "{D52FA27C-C48E-4DA8-BEB0-C5434D885CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameClub.API", "src\GameClub\GameClub.API\GameClub.API.csproj", "{D52FA27C-C48E-4DA8-BEB0-C5434D885CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClub.Domain", "src\GameClub\GameClub.Domain\GameClub.Domain.csproj", "{4930E0B7-BB12-42A7-A35F-A7B0FEF42FCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameClub.Domain", "src\GameClub\GameClub.Domain\GameClub.Domain.csproj", "{4930E0B7-BB12-42A7-A35F-A7B0FEF42FCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClub.Application", "src\GameClub\GameClub.Application\GameClub.Application.csproj", "{C3DF9B92-B6BC-4379-94D2-DEC67ACB092C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameClub.Application", "src\GameClub\GameClub.Application\GameClub.Application.csproj", "{C3DF9B92-B6BC-4379-94D2-DEC67ACB092C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClub.Infrastructure", "src\GameClub\GameClub.Infrastructure\GameClub.Infrastructure.csproj", "{05BA9F3F-A930-4E70-A6C6-D1EBCA12D2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameClub.Infrastructure", "src\GameClub\GameClub.Infrastructure\GameClub.Infrastructure.csproj", "{05BA9F3F-A930-4E70-A6C6-D1EBCA12D2A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarten.API", "src\Kindergarten\Kindergarten.API\Kindergarten.API.csproj", "{F6BCCA76-61A5-4D10-BFF1-8ED07BDCB477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarten.API", "src\Kindergarten\Kindergarten.API\Kindergarten.API.csproj", "{F6BCCA76-61A5-4D10-BFF1-8ED07BDCB477}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarten.Domain", "src\Kindergarten\Kindergarten.Domain\Kindergarten.Domain.csproj", "{5315F247-DB75-49A0-9BD6-5937021C128A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarten.Domain", "src\Kindergarten\Kindergarten.Domain\Kindergarten.Domain.csproj", "{5315F247-DB75-49A0-9BD6-5937021C128A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarten.Application", "src\Kindergarten\Kindergarten.Application\Kindergarten.Application.csproj", "{8DAA6BD9-9559-438B-B987-08F56069E8F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarten.Application", "src\Kindergarten\Kindergarten.Application\Kindergarten.Application.csproj", "{8DAA6BD9-9559-438B-B987-08F56069E8F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarten.Infrastructure", "src\Kindergarten\Kindergarten.Infrastructure\Kindergarten.Infrastructure.csproj", "{277A3140-233D-4B92-8872-D154E61E9642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarten.Infrastructure", "src\Kindergarten\Kindergarten.Infrastructure\Kindergarten.Infrastructure.csproj", "{277A3140-233D-4B92-8872-D154E61E9642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nikoh.API", "src\Nikoh\Nikoh.API\Nikoh.API.csproj", "{77AF453E-47B8-4A80-A7F2-A4BF17C1E07B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nikoh.API", "src\Nikoh\Nikoh.API\Nikoh.API.csproj", "{77AF453E-47B8-4A80-A7F2-A4BF17C1E07B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NIkoh.Domain", "src\Nikoh\NIkoh.Domain\NIkoh.Domain.csproj", "{AAE3DACC-668B-4981-B05B-8A53813873BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NIkoh.Domain", "src\Nikoh\NIkoh.Domain\NIkoh.Domain.csproj", "{AAE3DACC-668B-4981-B05B-8A53813873BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nikoh.Application", "src\Nikoh\Nikoh.Application\Nikoh.Application.csproj", "{EB05628A-BA4C-4CBE-B8EE-6AE339B2B2A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nikoh.Application", "src\Nikoh\Nikoh.Application\Nikoh.Application.csproj", "{EB05628A-BA4C-4CBE-B8EE-6AE339B2B2A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nikoh.Infrastructure", "src\Nikoh\Nikoh.Infrastructure\Nikoh.Infrastructure.csproj", "{BF7AFFC6-1A86-4176-916D-D2E76FEF43E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nikoh.Infrastructure", "src\Nikoh\Nikoh.Infrastructure\Nikoh.Infrastructure.csproj", "{BF7AFFC6-1A86-4176-916D-D2E76FEF43E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olx.API", "src\Olx\Olx.API\Olx.API.csproj", "{6D0130A3-706A-4A79-A602-BFE7CC169EE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olx.API", "src\Olx\Olx.API\Olx.API.csproj", "{6D0130A3-706A-4A79-A602-BFE7CC169EE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olx.Domain", "src\Olx\Olx.Domain\Olx.Domain.csproj", "{B45C03E4-248C-49D0-ADC5-821AF6B6F515}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olx.Domain", "src\Olx\Olx.Domain\Olx.Domain.csproj", "{B45C03E4-248C-49D0-ADC5-821AF6B6F515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olx.Application", "src\Olx\Olx.Application\Olx.Application.csproj", "{64CEDB5D-38D4-4A69-9701-FADD535348A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olx.Application", "src\Olx\Olx.Application\Olx.Application.csproj", "{64CEDB5D-38D4-4A69-9701-FADD535348A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olx.Infrastructure", "src\Olx\Olx.Infrastructure\Olx.Infrastructure.csproj", "{E6805DA3-555F-4382-8933-8E054D417243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olx.Infrastructure", "src\Olx\Olx.Infrastructure\Olx.Infrastructure.csproj", "{E6805DA3-555F-4382-8933-8E054D417243}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F6F3E803-D61B-4821-A49B-CF8FA5F96A63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GateWay", "GateWay", "{BE10D8B8-CBF5-44C0-9FB0-E94CAB47128C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.API", "src\GateWay\Gateway.API\Gateway.API.csproj", "{1F5FFD45-8C5A-4EC9-8067-61B86A54883E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +121,14 @@ Global
 		{E6805DA3-555F-4382-8933-8E054D417243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6805DA3-555F-4382-8933-8E054D417243}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6805DA3-555F-4382-8933-8E054D417243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F3E803-D61B-4821-A49B-CF8FA5F96A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F3E803-D61B-4821-A49B-CF8FA5F96A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F3E803-D61B-4821-A49B-CF8FA5F96A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F3E803-D61B-4821-A49B-CF8FA5F96A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F5FFD45-8C5A-4EC9-8067-61B86A54883E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F5FFD45-8C5A-4EC9-8067-61B86A54883E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F5FFD45-8C5A-4EC9-8067-61B86A54883E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F5FFD45-8C5A-4EC9-8067-61B86A54883E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +154,8 @@ Global
 		{B45C03E4-248C-49D0-ADC5-821AF6B6F515} = {07A81CC2-9E67-4832-B2A1-15214159AD40}
 		{64CEDB5D-38D4-4A69-9701-FADD535348A4} = {07A81CC2-9E67-4832-B2A1-15214159AD40}
 		{E6805DA3-555F-4382-8933-8E054D417243} = {07A81CC2-9E67-4832-B2A1-15214159AD40}
+		{BE10D8B8-CBF5-44C0-9FB0-E94CAB47128C} = {D77EB187-596C-41A4-AD7B-8EC7FC16F75F}
+		{1F5FFD45-8C5A-4EC9-8067-61B86A54883E} = {BE10D8B8-CBF5-44C0-9FB0-E94CAB47128C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A643B9D5-874F-4496-8F69-417E8C301409}
