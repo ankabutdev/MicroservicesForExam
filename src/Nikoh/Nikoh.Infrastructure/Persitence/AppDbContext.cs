@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Nikoh.Application.Abstractions;
+using Nikoh.Infrastructure.Persitence.EntityTypeConfiguration;
 using NIkoh.Domain.Entities.Marriages;
 using NIkoh.Domain.Entities.Persons;
 using NIkoh.Domain.Entities.Requirements;
@@ -10,18 +13,45 @@ namespace Nikoh.Infrastructure.Persitence;
 public class AppDbContext : DbContext, IAppDbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options) { }
+        : base(options)
+    {
+        var databaseCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
+        try
+        {
+            if (databaseCreator is null)
+            {
+                throw new Exception("Database Not Found!");
+            }
 
-    public virtual DbSet<Person> People { get; set; }
+            if (!databaseCreator.CanConnect())
+                databaseCreator.CreateAsync();
 
-    public virtual DbSet<Requirement> Requirements { get; set; }
+            if (!databaseCreator.HasTables())
+                databaseCreator.CreateTablesAsync();
 
-    public virtual DbSet<Marriage> Marriages { get; set; }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public DbSet<Person> People { get; set; }
+
+    public DbSet<Marriage> Marriages { get; set; }
+
+    public DbSet<Requirement> Requirements { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.ApplyConfiguration<Marriage>(new MarriageConfiguration());
+    }
+
+    async ValueTask<int> IAppDbContext.SaveChangesAsync(CancellationToken cancellationToken)
+    {
+        return await base.SaveChangesAsync(cancellationToken);
     }
 }
