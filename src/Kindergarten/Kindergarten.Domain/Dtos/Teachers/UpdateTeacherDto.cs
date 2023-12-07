@@ -1,7 +1,10 @@
-﻿namespace Kindergarten.Domain.Dtos.Teachers;
+﻿using System.Text.Json.Serialization;
+
+namespace Kindergarten.Domain.Dtos.Teachers;
 
 public class UpdateTeacherDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string FullName { get; set; }
