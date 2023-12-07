@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -7,11 +6,29 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Nikoh.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Marriages",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Healthy = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    WomenId = table.Column<long>(type: "bigint", nullable: false),
+                    ManId = table.Column<long>(type: "bigint", nullable: false),
+                    RequirementId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Marriages", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "People",
                 columns: table => new
@@ -46,57 +63,6 @@ namespace Nikoh.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Requirements", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Marriages",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Description = table.Column<string>(type: "text", nullable: false),
-                    Healthy = table.Column<string>(type: "text", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    WomenId = table.Column<long>(type: "bigint", nullable: false),
-                    ManId = table.Column<long>(type: "bigint", nullable: false),
-                    RequirementId = table.Column<long>(type: "bigint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Marriages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Marriages_People_ManId",
-                        column: x => x.ManId,
-                        principalTable: "People",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Marriages_People_WomenId",
-                        column: x => x.WomenId,
-                        principalTable: "People",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Marriages_Requirements_RequirementId",
-                        column: x => x.RequirementId,
-                        principalTable: "Requirements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Marriages_ManId",
-                table: "Marriages",
-                column: "ManId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Marriages_RequirementId",
-                table: "Marriages",
-                column: "RequirementId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Marriages_WomenId",
-                table: "Marriages",
-                column: "WomenId");
         }
 
         /// <inheritdoc />

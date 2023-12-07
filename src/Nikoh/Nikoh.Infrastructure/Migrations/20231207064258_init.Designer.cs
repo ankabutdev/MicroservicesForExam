@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Nikoh.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231206173153_initial")]
-    partial class initial
+    [Migration("20231207064258_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,12 +54,6 @@ namespace Nikoh.Infrastructure.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ManId");
-
-                    b.HasIndex("RequirementId");
-
-                    b.HasIndex("WomenId");
 
                     b.ToTable("Marriages");
                 });
@@ -129,33 +123,6 @@ namespace Nikoh.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Requirements");
-                });
-
-            modelBuilder.Entity("NIkoh.Domain.Entities.Marriages.Marriage", b =>
-                {
-                    b.HasOne("NIkoh.Domain.Entities.Persons.Person", "Man")
-                        .WithMany()
-                        .HasForeignKey("ManId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NIkoh.Domain.Entities.Requirements.Requirement", "Requirements")
-                        .WithMany()
-                        .HasForeignKey("RequirementId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NIkoh.Domain.Entities.Persons.Person", "Women")
-                        .WithMany()
-                        .HasForeignKey("WomenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Man");
-
-                    b.Navigation("Requirements");
-
-                    b.Navigation("Women");
                 });
 #pragma warning restore 612, 618
         }
