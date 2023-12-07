@@ -48,10 +48,11 @@ public class RequirementsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(UpdateRequirementDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, UpdateRequirementDto dto)
     {
         var req = _mapper.Map<UpdateReqCmd>(dto);
+        req.Id = Id;
         var result = await _mediator.Send(req);
         return Ok(result);
     }
