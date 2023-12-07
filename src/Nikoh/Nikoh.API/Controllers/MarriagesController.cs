@@ -48,10 +48,11 @@ public class MarriagesController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(UpdateMarriageDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, UpdateMarriageDto dto)
     {
         var marriage = _mapper.Map<UpdateMarriageCmd>(dto);
+        marriage.Id = Id;
         var result = await _mediator.Send(marriage);
         return Ok(result);
     }
