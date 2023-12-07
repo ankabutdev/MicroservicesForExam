@@ -1,7 +1,10 @@
-﻿namespace NIkoh.Domain.Dtos.Marriages;
+﻿using System.Text.Json.Serialization;
+
+namespace NIkoh.Domain.Dtos.Marriages;
 
 public class UpdateMarriageDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string Description { get; set; }
