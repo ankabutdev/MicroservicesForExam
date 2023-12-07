@@ -2,8 +2,10 @@
 using Kindergarten.Application.UseCases.ParentCase.Commands;
 using Kindergarten.Application.UseCases.ParentCase.Queries;
 using Kindergarten.Domain.Dtos.Parents;
+using Kindergarten.Domain.Entities.Parents;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Kindergarten.API.Controllers;
 
@@ -13,18 +15,33 @@ public class ParentsController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
+    private readonly IMemoryCache _cache;
 
-    public ParentsController(IMapper mapper, IMediator mediator)
+    public ParentsController(IMapper mapper, IMediator mediator, IMemoryCache cache)
     {
         _mapper = mapper;
         _mediator = mediator;
+        _cache = cache;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        var result = await _mediator
-            .Send(new GetAllParentQuery());
+        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        {
+            var parents = (IEnumerable<Parent>)cachedData!;
+            return Ok(parents);
+        }
+
+        var result = await _mediator.Send(new GetAllParentQuery());
+
+        var cacheEntryOptions = new MemoryCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
+            SlidingExpiration = TimeSpan.FromSeconds(20)
+        };
+
+        _cache.Set("AllParents", result, cacheEntryOptions);
 
         return Ok(result);
     }
