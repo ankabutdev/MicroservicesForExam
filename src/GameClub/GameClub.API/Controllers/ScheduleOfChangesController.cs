@@ -49,11 +49,11 @@ public class ScheduleOfChangesController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateAsync(ScheduleOfChangesUpdateDto dto)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> UpdateAsync(long Id, ScheduleOfChangesUpdateDto dto)
     {
-        var soch = _mapper.Map<ScheduleOfChangesCreateCommand>(dto);
-
+        var soch = _mapper.Map<ScheduleOfChangesUpdateCommand>(dto);
+        soch.Id = Id;
         var result = await _mediator.Send(soch);
 
         return Ok(result);
