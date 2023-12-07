@@ -249,6 +249,81 @@
       ],
       "UpstreamPathTemplate": "/teachers",
       "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Nikoh.API
+      "DownstreamPathTemplate": "/api/marriages/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nikoh.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/marriages/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/marriages",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nikoh.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/marriages",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Nikoh.API
+      "DownstreamPathTemplate": "/api/persons/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nikoh.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/persons/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/persons",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nikoh.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/persons",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Nikoh.API
+      "DownstreamPathTemplate": "/api/requirements/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nikoh.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/requirements/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/requirements",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nikoh.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/requirements",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
     }
   ],
   "GlobalConfiguration": {
