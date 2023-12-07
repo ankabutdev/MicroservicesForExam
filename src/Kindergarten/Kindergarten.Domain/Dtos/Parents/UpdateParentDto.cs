@@ -1,7 +1,10 @@
-﻿namespace Kindergarten.Domain.Dtos.Parents;
+﻿using System.Text.Json.Serialization;
+
+namespace Kindergarten.Domain.Dtos.Parents;
 
 public class UpdateParentDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string MotherFullName { get; set; }
