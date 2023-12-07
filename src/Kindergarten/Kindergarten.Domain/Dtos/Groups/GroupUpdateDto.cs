@@ -1,7 +1,10 @@
-﻿namespace Kindergarten.Domain.Dtos.Groups;
+﻿using System.Text.Json.Serialization;
+
+namespace Kindergarten.Domain.Dtos.Groups;
 
 public class GroupUpdateDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string Name { get; set; }
