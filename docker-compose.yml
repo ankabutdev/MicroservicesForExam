@@ -1,7 +1,24 @@
 version: '3.4'
 
 services:
+  # redis:
+  #   image: redis:latest
+  #   container_name: gameclub_redis
+  #   restart: always
+  #   volumes:
+  #     - ./gameclub_redis_data:/data
+  #   ports:
+  #     - "6379:6379"
 
+  # redis_insight:
+  #   image: redislabs/redisinsight:latest
+  #   container_name: gameclub_redis_insight
+  #   restart: always
+  #   ports:
+  #     - "8001:8001"
+  #   volumes:
+  #     - ./gameclub_redis_insight_data:/db
+ 
   sqldata:
     container_name: microservices-sqldata
     volumes:
@@ -24,6 +41,7 @@ services:
       - backend
     depends_on:
       - sqldata
+      #- redis
 
   kindergarten.api:
     image: ${DOCKER_REGISTRY-}kindergartenapi
@@ -55,6 +73,9 @@ services:
     ports:
      - 7676:8080
 
+# volumes:
+#   redis_volume_data:
+#   redis_insight_volume_data:
 
 networks:
   backend:
