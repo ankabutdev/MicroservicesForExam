@@ -27,7 +27,7 @@ public class AdminsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllKgAdmins", out var cachedData))
         {
             var admin = (IEnumerable<Admin>)cachedData!;
             return Ok(admin);
@@ -41,7 +41,7 @@ public class AdminsController : ControllerBase
             SlidingExpiration = TimeSpan.FromSeconds(20)
         };
 
-        _cache.Set("AllAdmins", result, cacheEntryOptions);
+        _cache.Set("AllKgAdmins", result, cacheEntryOptions);
 
         return Ok(result);
     }
