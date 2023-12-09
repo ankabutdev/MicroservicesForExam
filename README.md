@@ -22,6 +22,10 @@ Bu mening 100 Days of Code chellendjida qatnashish va imtihonga tayyorlanish uch
 
 - **Fluent API:** Qulay, chaqaloq va ma'lumotlar kiritish uchun Fluent API ishlatish.
 
+## Talablar
+ Sizning kampyuteringizda shu dasturlar o'rnatilgan bo'lishi kerak
+ **docker** va **Sql Server**
+
 ## Loyiha Haqida
 
 Loyiha quyidagi Servicelarga ega:
@@ -34,11 +38,16 @@ Loyiha quyidagi Servicelarga ega:
 ## Loyiha O'rnatish
 
 Loyiha kodlarini o'rnatish uchun quyidagi bosqichlarni bajarishni unutmang:
-
-1. **Docker va Docker Compose o'rnatish**
+1. **Loyihani clone qilasiz**
+**HTTPS**
    ```bash
-   docker-compose up -d
-2 **Docker composeni ishga tushurish**
+      https://github.com/ankabutdev/MicroservicesForExam.git
+   ```
+**SSH**
    ```bash
-   docker-compose exec [xozircha yo'q] dotnet run
+      git@github.com:ankabutdev/MicroservicesForExam.git
+   ```
+2. **Dockerni ishga tushirasiz**
+   ```bash
+      docker-compose up
 
