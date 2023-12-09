@@ -35,7 +35,7 @@ Loyiha quyidagi Servicelarga ega:
 3. **OLX**
 4. **Kindergarten**
 
-https://drawsql.app/teams/saloxiddin/diagrams/nikoh-db
+[https://drawsql.app/teams/saloxiddin/diagrams/nikoh-db](https://drawsql.app/teams/saloxiddin/diagrams/nikoh-db/embed)
 
 ## Loyiha O'rnatish
 
