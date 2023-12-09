@@ -47,10 +47,10 @@ https://github.com/ankabutdev/MicroservicesForExam.git
 ```bash
 git@github.com:ankabutdev/MicroservicesForExam.git
 ```
-2. **Dockerni ishga tushirasiz**
-***ESLATMA***
-*Docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlashni tavsiya etaman*
-**Toxtatish uchun**
+2. **Dockerni ishga tushirasiz**\
+***ESLATMA***\
+*Docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlashni tavsiya etaman*\
+**Toxtatish uchun**\
 ```bash
 docker container prune
 ```
@@ -58,34 +58,34 @@ docker container prune
 ```bash
 docker-compose up
 ```
-(example)
-  ***GameClub***
-**Barcha Get All So'rovlari**
-     - /admins
-     - /computers
-     - /players
-     - /sochs
-**Get By Id** (example)
-     - /admins/2
-     - /computers/2
-     - /players/2
-     - /sochs/2
-**DELETE** (example)
-     - /admins/2
-     - /computers/2
-     - /players/2
-     - /sochs/2
+(example)\
+  ***GameClub***\
+**Barcha Get All So'rovlari**\
+     - /admins\
+     - /computers\
+     - /players\
+     - /sochs\
+**Get By Id** (example)\
+     - /admins/2\
+     - /computers/2\
+     - /players/2\
+     - /sochs/2\
+**DELETE** (example)\
+     - /admins/2\
+     - /computers/2\
+     - /players/2\
+     - /sochs/2\
      
-**Barcha POST So'rovlari**
- bodyda jo'natiladi!
-     - /admins
-     - /computers
-     - /players
-     - /sochs
+**Barcha POST So'rovlari**\
+ bodyda jo'natiladi!\
+     - /admins\
+     - /computers\
+     - /players\
+     - /sochs\
  
- **PUT** (example)
- ma'lumotlari bodyda Id esa urlda  
-     - /admins/2
-     - /computers/2
-     - /players/2
-     - /sochs/2
+ **PUT** (example)\
+ ma'lumotlari bodyda Id esa urlda\
+     - /admins/2\
+     - /computers/2\
+     - /players/2\
+     - /sochs/2\
