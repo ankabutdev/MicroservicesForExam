@@ -67,7 +67,11 @@ docker-compose up
 ```bash
 http://localhost:7676/
 ```
+
+
 <br />
+<br />
+
   ***GameClub***\
 **Barcha Get All So'rovlari**\
      - /admins\
