@@ -60,9 +60,14 @@ docker-compose up
 ```
 
 ***POSTMEN da ishlatishni maslahat beraman***
+<br />
 (example)\
 **PLEASE USE THIS**\
-****http://localhost:port/ ****\
+<br />
+```bash
+http://localhost:7676/
+```
+<br />
   ***GameClub***\
 **Barcha Get All So'rovlari**\
      - /admins\
