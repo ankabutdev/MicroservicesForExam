@@ -50,7 +50,7 @@ git@github.com:ankabutdev/MicroservicesForExam.git
 2. **Dockerni ishga tushirasiz**\
 ***ESLATMA***\
 *Docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlashni tavsiya etaman*\
-**Toxtatish uchun**\
+**Toxtatish uchun**
 ```bash
 docker container prune
 ```
@@ -61,31 +61,34 @@ docker-compose up
 (example)\
   ***GameClub***\
 **Barcha Get All So'rovlari**\
-  <br />   - /admins\
+     - /admins\
      - /computers\
      - /players\
      - /sochs\
+     <br />
 **Get By Id** (example)\
      - /admins/2\
      - /computers/2\
      - /players/2\
      - /sochs/2\
+     <br />
 **DELETE** (example)\
      - /admins/2\
      - /computers/2\
      - /players/2\
      - /sochs/2\
-     
+     <br />
 **Barcha POST So'rovlari**\
  bodyda jo'natiladi!\
      - /admins\
      - /computers\
      - /players\
      - /sochs\
- 
+ <br />
  **PUT** (example)\
  ma'lumotlari bodyda Id esa urlda\
      - /admins/2\
      - /computers/2\
      - /players/2\
      - /sochs/2\
+ <br />
