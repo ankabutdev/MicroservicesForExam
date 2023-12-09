@@ -113,7 +113,7 @@ $${\color{lightgreen}GAME \space CLUB \space SERVICE}$$ <br />
      - /players/2\
      - /sochs/2\
  <br />
-   ***Kindergarten***\
+$${\color{lightgreen}KINDERGARTEN \space SERVICE}$$ <br />
 **Barcha Get All So'rovlari**\
      - /kgadmins\
      - /employees\
@@ -156,7 +156,7 @@ $${\color{lightgreen}GAME \space CLUB \space SERVICE}$$ <br />
      - /students/2\
      - /teachers/2\
  <br />
-  ***Nikoh***\
+$${\color{lightgreen}NIKOH \space SERVICE}$$ <br />
 **Barcha Get All So'rovlari**\
      - /marriages\
      - /persons\
