@@ -67,8 +67,8 @@ docker-compose up
 ***POSTMEN da ishlatishni maslahat beraman***
 
 <br />
-(example)\
-**PLEASE USE THIS**\
+(example) <br />
+**PLEASE USE THIS** <br />
 <br />
 **GateWayni Porti 7676** <br />
 
