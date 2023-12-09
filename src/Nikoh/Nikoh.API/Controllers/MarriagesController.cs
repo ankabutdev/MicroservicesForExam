@@ -27,7 +27,7 @@ public class MarriagesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllMarriages", out var cachedData))
         {
             var marriages = (IEnumerable<Marriage>)cachedData!;
             return Ok(marriages);

@@ -27,7 +27,7 @@ public class RequirementsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllRequirements", out var cachedData))
         {
             var reqs = (IEnumerable<Requirement>)cachedData!;
             return Ok(reqs);
