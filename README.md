@@ -58,7 +58,11 @@ docker container prune
 ```bash
 docker-compose up
 ```
+
+***POSTMEN da ishlatishni maslahat beraman***
 (example)\
+**PLEASE USE THIS**\
+****http://localhost:port/****\
   ***GameClub***\
 **Barcha Get All So'rovlari**\
      - /admins\
@@ -92,3 +96,75 @@ docker-compose up
      - /players/2\
      - /sochs/2\
  <br />
+   ***Kindergarten***\
+**Barcha Get All So'rovlari**\
+     - /kgadmins\
+     - /employees\
+     - /groups\
+     - /parents\
+     - /students\
+     - /teachers\
+     <br />
+**Get By Id** (example)\
+     - /kgadmins/2\
+     - /employees/2\
+     - /groups/2\
+     - /parents/2\
+     - /students/2\
+     - /teachers/2\
+     <br />
+**DELETE** (example)\
+     - /kgadmins/2\
+     - /employees/2\
+     - /groups/2\
+     - /parents/2\
+     - /students/2\
+     - /teachers/2\
+     <br />
+**Barcha POST So'rovlari**\
+ **bodyda jo'natiladi!**\
+     - /kgadmins\
+     - /employees\
+     - /groups\
+     - /parents\
+     - /students\
+     - /teachers\
+ <br />
+ **PUT** (example)\
+ **Ma'lumotlari bodyda, Id esa urlda**\
+      - /kgadmins/2\
+     - /employees/2\
+     - /groups/2\
+     - /parents/2\
+     - /students/2\
+     - /teachers/2\
+ <br />
+  ***Nikoh***\
+**Barcha Get All So'rovlari**\
+     - /marriages\
+     - /persons\
+     - /requirements\
+     <br />
+**Get By Id** (example)\
+     - /marriages/2\
+     - /persons/2\
+     - /requirements/2\
+     <br />
+**DELETE** (example)\
+     - /marriages/2\
+     - /persons/2\
+     - /requirements/2\
+     <br />
+**Barcha POST So'rovlari**\
+ bodyda jo'natiladi!\
+     - /marriages\
+     - /persons\
+     - /requirements\
+ <br />
+ **PUT** (example)\
+ ma'lumotlari bodyda Id esa urlda\
+     - /marriages/2\
+     - /persons/2\
+     - /requirements/2\
+ <br />
+
