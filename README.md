@@ -67,18 +67,20 @@ docker-compose up
 ***POSTMEN da ishlatishni maslahat beraman***
 
 <br />
-(example)\
-**PLEASE USE THIS**\
+(example) <br />
+**PLEASE USE THIS** <br />
 <br />
+**GateWayni Porti 7676** <br />
+
 ```bash
-http://localhost:7676/
+ http://localhost:7676/
 ```
 
 
 <br />
 <br />
 
-  ***GameClub***\
+$${\color{lightgreen}GAME \space CLUB \space SERVICE}$$ <br />
 **Barcha Get All So'rovlari**\
      - /admins\
      - /computers\
@@ -111,7 +113,7 @@ http://localhost:7676/
      - /players/2\
      - /sochs/2\
  <br />
-   ***Kindergarten***\
+$${\color{lightgreen}KINDERGARTEN \space SERVICE}$$ <br />
 **Barcha Get All So'rovlari**\
      - /kgadmins\
      - /employees\
@@ -154,7 +156,7 @@ http://localhost:7676/
      - /students/2\
      - /teachers/2\
  <br />
-  ***Nikoh***\
+$${\color{lightgreen}NIKOH \space SERVICE}$$ <br />
 **Barcha Get All So'rovlari**\
      - /marriages\
      - /persons\
