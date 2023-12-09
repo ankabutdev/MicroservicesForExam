@@ -48,14 +48,14 @@ https://github.com/ankabutdev/MicroservicesForExam.git
 git@github.com:ankabutdev/MicroservicesForExam.git
 ```
 2. **Dockerni ishga tushirasiz**
+
 ***ESLATMA***
-   *docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlang*
+   *docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlashni tavsiya etaman*
 **Toxtatish uchun**
 ```bash
 docker container prune
 ```
+3. **Ishga tushirish uchun**
 ```bash
 docker-compose up
 ```
-
-
