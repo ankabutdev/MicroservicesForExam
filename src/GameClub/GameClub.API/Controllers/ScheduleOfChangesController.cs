@@ -29,7 +29,7 @@ public class ScheduleOfChangesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllScheduleOfChanges", out var cachedData))
         {
             var soch = (IEnumerable<ScheduleOfChanges>)cachedData!;
             return Ok(soch);

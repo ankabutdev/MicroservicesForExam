@@ -29,7 +29,7 @@ public class PlayersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllPlayers", out var cachedData))
         {
             var player = (IEnumerable<Player>)cachedData!;
             return Ok(player);

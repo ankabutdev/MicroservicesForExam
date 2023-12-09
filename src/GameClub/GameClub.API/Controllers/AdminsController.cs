@@ -31,7 +31,7 @@ public class AdminsController : ControllerBase
     {
         if (_cache.TryGetValue("AllAdmins", out var cachedData))
         {
-            var admin = (IEnumerable<Admin>)cachedData!;
+            IEnumerable<Admin>? admin = (IEnumerable<Admin>)cachedData;
             return Ok(admin);
         }
 

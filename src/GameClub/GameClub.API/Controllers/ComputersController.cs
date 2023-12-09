@@ -29,9 +29,9 @@ public class ComputersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllComputers", out var cachedData))
         {
-            var computer = (IEnumerable<Computer>)cachedData!;
+            IEnumerable<Computer>? computer = (IEnumerable<Computer>)cachedData;
             return Ok(computer);
         }
 
