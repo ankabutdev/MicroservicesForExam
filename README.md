@@ -70,9 +70,10 @@ docker-compose up
 (example)\
 **PLEASE USE THIS**\
 <br />
-**GateWayni Porti 7676**<br />
+**GateWayni Porti 7676** <br />
+
 ```bash
-http://localhost:7676/
+ http://localhost:7676/
 ```
 
 
