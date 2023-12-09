@@ -22,6 +22,10 @@ Bu mening 100 Days of Code chellendjida qatnashish va imtihonga tayyorlanish uch
 
 - **Fluent API:** Qulay, chaqaloq va ma'lumotlar kiritish uchun Fluent API ishlatish.
 
+## Talablar
+ Sizning kampyuteringizda shu dasturlar o'rnatilgan bo'lishi kerak
+ **docker** va **Sql Server**
+
 ## Loyiha Haqida
 
 Loyiha quyidagi Servicelarga ega:
@@ -34,11 +38,142 @@ Loyiha quyidagi Servicelarga ega:
 ## Loyiha O'rnatish
 
 Loyiha kodlarini o'rnatish uchun quyidagi bosqichlarni bajarishni unutmang:
+1. **Loyihani clone qilasiz**
+**HTTPS**
+```bash
+https://github.com/ankabutdev/MicroservicesForExam.git
+```
+**SSH**
+```bash
+git@github.com:ankabutdev/MicroservicesForExam.git
+```
+2. **Dockerni ishga tushirasiz**\
+***ESLATMA***\
+*Docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlashni tavsiya etaman*\
+**Toxtatish uchun**
+```bash
+docker container prune
+```
+3. **Ishga tushirish uchun**
+```bash
+docker-compose up
+```
 
-1. **Docker va Docker Compose o'rnatish**
-   ```bash
-   docker-compose up -d
-2 **Docker composeni ishga tushurish**
-   ```bash
-   docker-compose exec [xozircha yo'q] dotnet run
+***POSTMEN da ishlatishni maslahat beraman***
+<br />
+(example)\
+**PLEASE USE THIS**\
+<br />
+```bash
+http://localhost:7676/
+```
+
+
+<br />
+<br />
+
+  ***GameClub***\
+**Barcha Get All So'rovlari**\
+     - /admins\
+     - /computers\
+     - /players\
+     - /sochs\
+     <br />
+**Get By Id** (example)\
+     - /admins/2\
+     - /computers/2\
+     - /players/2\
+     - /sochs/2\
+     <br />
+**DELETE** (example)\
+     - /admins/2\
+     - /computers/2\
+     - /players/2\
+     - /sochs/2\
+     <br />
+**Barcha POST So'rovlari**\
+ bodyda jo'natiladi!\
+     - /admins\
+     - /computers\
+     - /players\
+     - /sochs\
+ <br />
+ **PUT** (example)\
+ ma'lumotlari bodyda Id esa urlda\
+     - /admins/2\
+     - /computers/2\
+     - /players/2\
+     - /sochs/2\
+ <br />
+   ***Kindergarten***\
+**Barcha Get All So'rovlari**\
+     - /kgadmins\
+     - /employees\
+     - /groups\
+     - /parents\
+     - /students\
+     - /teachers\
+     <br />
+**Get By Id** (example)\
+     - /kgadmins/2\
+     - /employees/2\
+     - /groups/2\
+     - /parents/2\
+     - /students/2\
+     - /teachers/2\
+     <br />
+**DELETE** (example)\
+     - /kgadmins/2\
+     - /employees/2\
+     - /groups/2\
+     - /parents/2\
+     - /students/2\
+     - /teachers/2\
+     <br />
+**Barcha POST So'rovlari**\
+ **bodyda jo'natiladi!**\
+     - /kgadmins\
+     - /employees\
+     - /groups\
+     - /parents\
+     - /students\
+     - /teachers\
+ <br />
+ **PUT** (example)\
+ **Ma'lumotlari bodyda, Id esa urlda**\
+      - /kgadmins/2\
+     - /employees/2\
+     - /groups/2\
+     - /parents/2\
+     - /students/2\
+     - /teachers/2\
+ <br />
+  ***Nikoh***\
+**Barcha Get All So'rovlari**\
+     - /marriages\
+     - /persons\
+     - /requirements\
+     <br />
+**Get By Id** (example)\
+     - /marriages/2\
+     - /persons/2\
+     - /requirements/2\
+     <br />
+**DELETE** (example)\
+     - /marriages/2\
+     - /persons/2\
+     - /requirements/2\
+     <br />
+**Barcha POST So'rovlari**\
+ bodyda jo'natiladi!\
+     - /marriages\
+     - /persons\
+     - /requirements\
+ <br />
+ **PUT** (example)\
+ ma'lumotlari bodyda Id esa urlda\
+     - /marriages/2\
+     - /persons/2\
+     - /requirements/2\
+ <br />
 
