@@ -62,7 +62,7 @@ docker-compose up
 ***POSTMEN da ishlatishni maslahat beraman***
 (example)\
 **PLEASE USE THIS**\
-****http://localhost:port/****\
+****http://localhost:port/ ****\
   ***GameClub***\
 **Barcha Get All So'rovlari**\
      - /admins\
