@@ -35,6 +35,11 @@ Loyiha quyidagi Servicelarga ega:
 3. **OLX**
 4. **Kindergarten**
 
+1 -> https://drawsql.app/teams/saloxiddin/diagrams/game-club-db/embed <br />
+2 -> https://drawsql.app/teams/saloxiddin/diagrams/nikoh-db/embed <br />
+3 -> https://drawsql.app/teams/saloxiddin/diagrams/olx-db/embed <br />
+4 -> https://drawsql.app/teams/saloxiddin/diagrams/kindergarten-db/embed <br />
+   
 ## Loyiha O'rnatish
 
 Loyiha kodlarini o'rnatish uchun quyidagi bosqichlarni bajarishni unutmang:
@@ -60,6 +65,7 @@ docker-compose up
 ```
 
 ***POSTMEN da ishlatishni maslahat beraman***
+
 <br />
 (example)\
 **PLEASE USE THIS**\
