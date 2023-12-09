@@ -40,14 +40,22 @@ Loyiha quyidagi Servicelarga ega:
 Loyiha kodlarini o'rnatish uchun quyidagi bosqichlarni bajarishni unutmang:
 1. **Loyihani clone qilasiz**
 **HTTPS**
-   ```bash
-      https://github.com/ankabutdev/MicroservicesForExam.git
-   ```
+```bash
+https://github.com/ankabutdev/MicroservicesForExam.git
+```
 **SSH**
-   ```bash
-      git@github.com:ankabutdev/MicroservicesForExam.git
-   ```
+```bash
+git@github.com:ankabutdev/MicroservicesForExam.git
+```
 2. **Dockerni ishga tushirasiz**
-   ```bash
-      docker-compose up
+***ESLATMA***
+   *docker composeni ishga tushurishdan oldin hamma containerlarni toxtatib o'chirib tashlang o'chirib tashlang*
+**Toxtatish uchun**
+```bash
+docker container prune
+```
+```bash
+docker-compose up
+```
+
 
