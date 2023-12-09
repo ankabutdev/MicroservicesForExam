@@ -61,7 +61,7 @@ docker-compose up
 (example)\
   ***GameClub***\
 **Barcha Get All So'rovlari**\
-     - /admins\
+  <br />   - /admins\
      - /computers\
      - /players\
      - /sochs\
