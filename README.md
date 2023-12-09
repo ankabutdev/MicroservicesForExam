@@ -35,10 +35,10 @@ Loyiha quyidagi Servicelarga ega:
 3. **OLX**
 4. **Kindergarten**
 
-1 -> https://drawsql.app/teams/saloxiddin/diagrams/game-club-db <br />
+1 -> https://drawsql.app/teams/saloxiddin/diagrams/game-club-db/embed <br />
 2 -> https://drawsql.app/teams/saloxiddin/diagrams/nikoh-db/embed <br />
-3 -> https://drawsql.app/teams/saloxiddin/diagrams/olx-db <br />
-4 -> https://drawsql.app/teams/saloxiddin/diagrams/kindergarten-db <br />
+3 -> https://drawsql.app/teams/saloxiddin/diagrams/olx-db/embed <br />
+4 -> https://drawsql.app/teams/saloxiddin/diagrams/kindergarten-db/embed <br />
    
 ## Loyiha O'rnatish
 
