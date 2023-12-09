@@ -22,5 +22,28 @@ public class AdminConfiguration : IEntityTypeConfiguration<Admin>
         builder.HasMany(x => x.ScheduleOfChanges)
             .WithOne(x => x.Admin)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasData(
+            new Admin
+            {
+                Id = 1,
+                Name = "test1",
+                Password = "test1",
+                ScheduleOfChanges = []
+            },
+            new Admin
+            {
+                Id = 2,
+                Name = "test2",
+                Password = "test2",
+                ScheduleOfChanges = []
+            },
+            new Admin
+            {
+                Id = 3,
+                Name = "test3",
+                Password = "test3",
+                ScheduleOfChanges = []
+            });
     }
 }

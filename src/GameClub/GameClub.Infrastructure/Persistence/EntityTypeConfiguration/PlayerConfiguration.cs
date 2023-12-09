@@ -19,5 +19,35 @@ public class PlayerConfiguration : IEntityTypeConfiguration<Player>
         builder.HasMany(x => x.ScheduleOfChanges)
             .WithOne(x => x.Player)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasData(
+            new Player
+            {
+                Id = 1,
+                NickName = "test1",
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow,
+                HoursCount = 1,
+                ComputerId = 2,
+            },
+            new Player
+            {
+                Id = 2,
+                NickName = "test1",
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow,
+                HoursCount = 1,
+                ComputerId = 2,
+                ScheduleOfChanges = [],
+            },
+            new Player
+            {
+                Id = 3,
+                NickName = "test1",
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow,
+                HoursCount = 1,
+                ComputerId = 2,
+            }) ;
     }
 }

@@ -32,5 +32,32 @@ public class ComputerConfiguration : IEntityTypeConfiguration<Computer>
         builder.HasMany(x => x.Players)
             .WithOne(x => x.Computer)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasData(
+            new Computer
+            {
+                Id = 1,
+                Name = "test1",
+                PriceOfHour = 10,
+                Version = "1.0",
+                Players = []
+            },
+            new Computer
+            {
+                Id = 2,
+                Name = "test2",
+                PriceOfHour = 11,
+                Version = "2.0",
+                Players = []
+            },
+            new Computer
+            {
+                Id = 3,
+                Name = "test3",
+                PriceOfHour = 12,
+                Version = "3.0",
+                Players = []
+            });
+
     }
 }
