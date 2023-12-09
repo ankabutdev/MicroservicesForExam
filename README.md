@@ -80,7 +80,7 @@ docker-compose up
 <br />
 <br />
 
-   ***GameClub***\
+  <font color="green"> GAME CLUB </font>
 **Barcha Get All So'rovlari**\
      - /admins\
      - /computers\
