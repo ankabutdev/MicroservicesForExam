@@ -27,7 +27,7 @@ public class GroupsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllGroups", out var cachedData))
         {
             var group = (IEnumerable<Group>)cachedData!;
             return Ok(group);

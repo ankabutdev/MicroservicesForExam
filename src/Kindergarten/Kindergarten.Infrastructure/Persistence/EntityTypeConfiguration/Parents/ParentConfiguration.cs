@@ -21,5 +21,38 @@ public class ParentConfiguration : IEntityTypeConfiguration<Parent>
         builder.Property(p => p.Address).HasMaxLength(255);
 
         builder.HasMany(p => p.Students).WithOne(s => s.Parent).HasForeignKey(s => s.ParentId);
+
+        builder.HasData(
+            new Parent
+            {
+                Id = 1,
+                Address = "test1",
+                Email = "test1",
+                FatherFullName = "test1",
+                MotherFullName = "test1",
+                PassportSeriaNumber = "test1",
+                PhoneNumber = "test1",
+            },
+            new Parent
+            {
+                Id = 2,
+                Address = "test2",
+                Email = "test3",
+                FatherFullName = "test3",
+                MotherFullName = "test3",
+                PassportSeriaNumber = "test3",
+                PhoneNumber = "test3",
+            },
+            new Parent
+            {
+                Id = 3,
+                Address = "test3",
+                Email = "test3",
+                FatherFullName = "test3",
+                MotherFullName = "test3",
+                PassportSeriaNumber = "test3",
+                PhoneNumber = "test3",
+            });
+
     }
 }

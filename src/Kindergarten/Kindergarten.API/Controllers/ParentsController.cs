@@ -27,7 +27,7 @@ public class ParentsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllParents", out var cachedData))
         {
             var parents = (IEnumerable<Parent>)cachedData!;
             return Ok(parents);

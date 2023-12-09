@@ -27,7 +27,7 @@ public class TeachersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        if (_cache.TryGetValue("AllTeachers", out var cachedData))
         {
             var teachers = (IEnumerable<Teacher>)cachedData!;
             return Ok(teachers);

@@ -21,5 +21,35 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
 
         builder.HasMany(g => g.Students).WithOne(s => s.Group).HasForeignKey(s => s.GroupId);
         builder.HasMany(g => g.Teachers).WithMany(t => t.Groups);
+
+        builder.HasData(
+            new Group
+            {
+                Id = 1,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.MaxValue,
+                AgeGroup = 3,
+                Description = "Description1",
+                Name = "test1"
+            },
+            new Group
+            {
+                Id = 2,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.MaxValue,
+                AgeGroup = 2,
+                Description = "Description2",
+                Name = "test2"
+            },
+            new Group
+            {
+                Id = 3,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.MaxValue,
+                AgeGroup = 1,
+                Description = "Description3",
+                Name = "test3"
+            });
+
     }
 }

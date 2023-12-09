@@ -20,5 +20,28 @@ public class AdminConfiguration : IEntityTypeConfiguration<Admin>
         builder.Property(x => x.Password)
             .HasMaxLength(256)
             .IsRequired();
+
+        builder.HasData(
+            new Admin
+            {
+                Id = 1,
+                Name = "test1",
+                Password = "test1",
+                Email = "testemail1"
+            },
+            new Admin
+            {
+                Id = 2,
+                Name = "test2",
+                Password = "test2",
+                Email = "testemail2"
+            },
+            new Admin
+            {
+                Id = 3,
+                Name = "test3",
+                Password = "test3",
+                Email = "testemail3"
+            });
     }
 }
