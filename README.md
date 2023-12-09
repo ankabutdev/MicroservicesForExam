@@ -35,6 +35,8 @@ Loyiha quyidagi Servicelarga ega:
 3. **OLX**
 4. **Kindergarten**
 
+https://drawsql.app/teams/saloxiddin/diagrams/nikoh-db
+
 ## Loyiha O'rnatish
 
 Loyiha kodlarini o'rnatish uchun quyidagi bosqichlarni bajarishni unutmang:
