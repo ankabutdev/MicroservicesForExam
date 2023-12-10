@@ -12,5 +12,5 @@ public class Category
 
     public DateTime UpdatedAt { get; set; }
 
-    public ICollection<Announcements> Announcements { get; set; }
+    public ICollection<Announcement> Announcements { get; set; }
 }
