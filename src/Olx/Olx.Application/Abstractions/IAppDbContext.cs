@@ -7,7 +7,7 @@ public interface IAppDbContext
 {
     DbSet<User> Users { get; set; }
 
-    DbSet<Announcements> Announcements { get; set; }
+    DbSet<Announcement> Announcements { get; set; }
 
     DbSet<Category> Categories { get; set; }
 
