@@ -20,5 +20,5 @@ public class User
 
     public Role Role { get; set; }
 
-    public ICollection<Announcements> Announcements { get; set; }
+    public ICollection<Announcement> Announcements { get; set; }
 }
