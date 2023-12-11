@@ -4,10 +4,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace GameClub.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class intitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -93,6 +95,46 @@ namespace GameClub.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Admins",
+                columns: new[] { "Id", "Name", "Password" },
+                values: new object[,]
+                {
+                    { 1L, "test1", "test1" },
+                    { 2L, "test2", "test2" },
+                    { 3L, "test3", "test3" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Computers",
+                columns: new[] { "Id", "Name", "PriceOfHour", "Version" },
+                values: new object[,]
+                {
+                    { 1L, "test1", 10.0, "1.0" },
+                    { 2L, "test2", 11.0, "2.0" },
+                    { 3L, "test3", 12.0, "3.0" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Players",
+                columns: new[] { "Id", "ComputerId", "EndDate", "HoursCount", "NickName", "StartDate" },
+                values: new object[,]
+                {
+                    { 1L, 2L, new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4013), 1L, "test1", new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4013) },
+                    { 2L, 2L, new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4019), 1L, "test1", new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4018) },
+                    { 3L, 2L, new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4023), 1L, "test1", new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4023) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ScheduleOfChanges",
+                columns: new[] { "Id", "AdminId", "Description", "PlayerId", "Status", "TotalPrice" },
+                values: new object[,]
+                {
+                    { 1L, 2L, "test1", 1L, 0, 12.0 },
+                    { 2L, 2L, "test2", 1L, 0, 12.0 },
+                    { 3L, 2L, "test3", 1L, 2, 12.0 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Computers_Version",
                 table: "Computers",
@@ -103,12 +145,6 @@ namespace GameClub.Infrastructure.Migrations
                 name: "IX_Players_ComputerId",
                 table: "Players",
                 column: "ComputerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Players_NickName",
-                table: "Players",
-                column: "NickName",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ScheduleOfChanges_AdminId",
