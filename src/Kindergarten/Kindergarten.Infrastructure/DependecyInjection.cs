@@ -15,7 +15,7 @@ public static class DependecyInjection
 
         services.AddDbContext<IAppDbContext, AppDbContext>(options =>
         {
-            options.UseSqlServer(dockerConnection);
+            options.UseNpgsql(defaultConnection);
         });
 
         return services;
