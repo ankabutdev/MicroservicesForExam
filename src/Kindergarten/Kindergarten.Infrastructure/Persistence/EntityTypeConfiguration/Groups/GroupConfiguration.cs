@@ -20,7 +20,7 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
         builder.Property(g => g.EndDate).IsRequired();
 
         builder.HasMany(g => g.Students).WithOne(s => s.Group).HasForeignKey(s => s.GroupId);
-        builder.HasMany(g => g.Teachers).WithMany(t => t.Groups);
+        //builder.HasMany(g => g.Teachers).WithMany(t => t.Groups);
 
         builder.HasData(
             new Group
