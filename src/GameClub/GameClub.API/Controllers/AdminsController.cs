@@ -29,21 +29,21 @@ public class AdminsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        if (_cache.TryGetValue("AllAdmins", out var cachedData))
-        {
-            IEnumerable<Admin>? admin = (IEnumerable<Admin>)cachedData;
-            return Ok(admin);
-        }
+        //if (_cache.TryGetValue("AllAdmins", out var cachedData))
+        //{
+        //    IEnumerable<Admin>? admin = (IEnumerable<Admin>)cachedData;
+        //    return Ok(admin);
+        //}
 
         var result = await _mediator.Send(new AdminGetAllQuery());
 
-        var cacheEntryOptions = new MemoryCacheEntryOptions
-        {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
-            SlidingExpiration = TimeSpan.FromSeconds(20)
-        };
+        //var cacheEntryOptions = new MemoryCacheEntryOptions
+        //{
+        //    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1),
+        //    SlidingExpiration = TimeSpan.FromSeconds(20)
+        //};
 
-        _cache.Set("AllAdmins", result, cacheEntryOptions);
+        //_cache.Set("AllAdmins", result, cacheEntryOptions);
 
         return Ok(result);
     }
