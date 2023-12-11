@@ -31,7 +31,8 @@ public class ScheduleOfChangesConfiguration : IEntityTypeConfiguration<ScheduleO
                         Description = "test1",
                         Status = ChangesStatus.Started,
                         TotalPrice = 12,
-                        AdminId = 2
+                        AdminId = 2,
+                        PlayerId = 1
                     },
                     new ScheduleOfChanges
                     {
@@ -39,7 +40,8 @@ public class ScheduleOfChangesConfiguration : IEntityTypeConfiguration<ScheduleO
                         Description = "test2",
                         Status = ChangesStatus.Started,
                         TotalPrice = 12,
-                        AdminId = 2
+                        AdminId = 2,
+                        PlayerId = 1
                     },
                     new ScheduleOfChanges
                     {
@@ -47,7 +49,8 @@ public class ScheduleOfChangesConfiguration : IEntityTypeConfiguration<ScheduleO
                         Description = "test3",
                         Status = ChangesStatus.Playing,
                         TotalPrice = 12,
-                        AdminId = 2
+                        AdminId = 2,
+                        PlayerId = 1
                     });
 
     }
