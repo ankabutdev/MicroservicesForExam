@@ -1,6 +1,8 @@
 using Gateway.API;
+using JwtService.Core;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +17,11 @@ builder.Configuration
     .AddEnvironmentVariables();
 
 builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddCustomJwtLayer();
 
 var app = builder.Build();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

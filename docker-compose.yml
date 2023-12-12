@@ -77,5 +77,14 @@ services:
 #   redis_volume_data:
 #   redis_insight_volume_data:
 
+  jwtservice.api:
+    image: ${DOCKER_REGISTRY-}jwtserviceapi
+    build:
+      context: .
+      dockerfile: src/Auth/JwtService.API/Dockerfile
+    networks:
+     - backend
+
 networks:
   backend:
+
