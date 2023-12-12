@@ -4,9 +4,9 @@ using Olx.Domain.Entities;
 
 namespace Olx.Infrastructure.Persistence.EntityTypeConfiguration;
 
-public class AnnouncementConfiguration : IEntityTypeConfiguration<Announcements>
+public class AnnouncementConfiguration : IEntityTypeConfiguration<Announcement>
 {
-    public void Configure(EntityTypeBuilder<Announcements> builder)
+    public void Configure(EntityTypeBuilder<Announcement> builder)
     {
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Name).IsRequired();

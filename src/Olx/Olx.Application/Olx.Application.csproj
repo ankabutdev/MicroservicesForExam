@@ -18,9 +18,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Olx.Domain\Olx.Domain.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="UseCases\" />
-  </ItemGroup>
 
 </Project>

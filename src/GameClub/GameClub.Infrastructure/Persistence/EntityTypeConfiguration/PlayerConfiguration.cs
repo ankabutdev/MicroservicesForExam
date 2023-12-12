@@ -13,9 +13,6 @@ public class PlayerConfiguration : IEntityTypeConfiguration<Player>
         builder.Property(x => x.Id)
             .UseIdentityColumn();
 
-        builder.HasIndex(x => x.NickName)
-            .IsUnique();
-
         builder.HasMany(x => x.ScheduleOfChanges)
             .WithOne(x => x.Player)
             .OnDelete(DeleteBehavior.Cascade);

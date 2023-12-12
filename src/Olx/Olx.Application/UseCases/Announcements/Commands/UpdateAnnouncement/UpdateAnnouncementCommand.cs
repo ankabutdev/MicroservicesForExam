@@ -1,18 +1,18 @@
-﻿namespace Olx.Domain.Entities;
+﻿using MediatR;
 
-public class Announcements
+namespace Olx.Application.UseCases.Announcements.Commands.UpdateAnnouncement;
+
+public class UpdateAnnouncementCommand : IRequest<bool>
 {
     public long Id { get; set; }
 
     public string Name { get; set; }
 
     public long UserId { get; set; }
-    public User User { get; set; }
 
     public string Description { get; set; }
 
     public long CategortId { get; set; }
-    public Category Category { get; set; }
 
     public string Title { get; set; }
 
@@ -21,5 +21,4 @@ public class Announcements
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
-
 }

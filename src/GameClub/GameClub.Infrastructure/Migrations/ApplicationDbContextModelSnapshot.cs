@@ -41,6 +41,26 @@ namespace GameClub.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "test1",
+                            Password = "test1"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "test2",
+                            Password = "test2"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "test3",
+                            Password = "test3"
+                        });
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.Computer", b =>
@@ -69,6 +89,29 @@ namespace GameClub.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Computers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "test1",
+                            PriceOfHour = 10.0,
+                            Version = "1.0"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "test2",
+                            PriceOfHour = 11.0,
+                            Version = "2.0"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "test3",
+                            PriceOfHour = 12.0,
+                            Version = "3.0"
+                        });
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.Player", b =>
@@ -99,10 +142,36 @@ namespace GameClub.Infrastructure.Migrations
 
                     b.HasIndex("ComputerId");
 
-                    b.HasIndex("NickName")
-                        .IsUnique();
-
                     b.ToTable("Players");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            ComputerId = 2L,
+                            EndDate = new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4013),
+                            HoursCount = 1L,
+                            NickName = "test1",
+                            StartDate = new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4013)
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            ComputerId = 2L,
+                            EndDate = new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4019),
+                            HoursCount = 1L,
+                            NickName = "test1",
+                            StartDate = new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4018)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            ComputerId = 2L,
+                            EndDate = new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4023),
+                            HoursCount = 1L,
+                            NickName = "test1",
+                            StartDate = new DateTime(2023, 12, 11, 14, 18, 12, 914, DateTimeKind.Utc).AddTicks(4023)
+                        });
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.ScheduleOfChanges", b =>
@@ -137,6 +206,35 @@ namespace GameClub.Infrastructure.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("ScheduleOfChanges");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AdminId = 2L,
+                            Description = "test1",
+                            PlayerId = 1L,
+                            Status = 0,
+                            TotalPrice = 12.0
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            AdminId = 2L,
+                            Description = "test2",
+                            PlayerId = 1L,
+                            Status = 0,
+                            TotalPrice = 12.0
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            AdminId = 2L,
+                            Description = "test3",
+                            PlayerId = 1L,
+                            Status = 2,
+                            TotalPrice = 12.0
+                        });
                 });
 
             modelBuilder.Entity("GameClub.Domain.Entities.Player", b =>

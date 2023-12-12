@@ -1,5 +1,18 @@
 {
   "Routes": [
+    //authenticate
+    {
+      "UpstreamPathTemplate": "/auth",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "jwtservice.api",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/auth"
+    },
     {
       // GameClub.API
       "DownstreamPathTemplate": "/api/admins/{id}",

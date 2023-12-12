@@ -51,15 +51,40 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Email = "testemail1",
+                            Name = "test1",
+                            Password = "test1"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Email = "testemail2",
+                            Name = "test2",
+                            Password = "test2"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Email = "testemail3",
+                            Name = "test3",
+                            Password = "test3"
+                        });
                 });
 
             modelBuilder.Entity("Kindergarten.Domain.Entities.Employees.Employee", b =>
@@ -76,7 +101,8 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("integer");
@@ -87,7 +113,36 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Email = "test1",
+                            FullName = "test1",
+                            Gender = 1,
+                            PhoneNumber = "test1"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Email = "test2",
+                            FullName = "test2",
+                            Gender = 2,
+                            PhoneNumber = "test2"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Email = "test3",
+                            FullName = "test3",
+                            Gender = 1,
+                            PhoneNumber = "test3"
+                        });
                 });
 
             modelBuilder.Entity("Kindergarten.Domain.Entities.Groups.Group", b =>
@@ -103,14 +158,16 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
@@ -118,6 +175,35 @@ namespace Kindergarten.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AgeGroup = 3L,
+                            Description = "Description1",
+                            EndDate = new DateTime(9999, 12, 31, 23, 59, 59, 999, DateTimeKind.Unspecified).AddTicks(9999),
+                            Name = "test1",
+                            StartDate = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(4644)
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            AgeGroup = 2L,
+                            Description = "Description2",
+                            EndDate = new DateTime(9999, 12, 31, 23, 59, 59, 999, DateTimeKind.Unspecified).AddTicks(9999),
+                            Name = "test2",
+                            StartDate = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(4648)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            AgeGroup = 1L,
+                            Description = "Description3",
+                            EndDate = new DateTime(9999, 12, 31, 23, 59, 59, 999, DateTimeKind.Unspecified).AddTicks(9999),
+                            Name = "test3",
+                            StartDate = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(4650)
+                        });
                 });
 
             modelBuilder.Entity("Kindergarten.Domain.Entities.Parents.Parent", b =>
@@ -130,31 +216,69 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("FatherFullName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("MotherFullName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("PassportSeriaNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Parents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Address = "test1",
+                            Email = "test1",
+                            FatherFullName = "test1",
+                            MotherFullName = "test1",
+                            PassportSeriaNumber = "test1",
+                            PhoneNumber = "test1"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Address = "test2",
+                            Email = "test3",
+                            FatherFullName = "test3",
+                            MotherFullName = "test3",
+                            PassportSeriaNumber = "test3",
+                            PhoneNumber = "test3"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Address = "test3",
+                            Email = "test3",
+                            FatherFullName = "test3",
+                            MotherFullName = "test3",
+                            PassportSeriaNumber = "test3",
+                            PhoneNumber = "test3"
+                        });
                 });
 
             modelBuilder.Entity("Kindergarten.Domain.Entities.Students.Student", b =>
@@ -167,14 +291,16 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("integer");
@@ -195,6 +321,41 @@ namespace Kindergarten.Infrastructure.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Address = "test1",
+                            DateOfBirth = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(9846),
+                            FullName = "test1",
+                            Gender = 1,
+                            GroupId = 1L,
+                            ParentId = 2L,
+                            RegisteredAt = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(9845)
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Address = "test2",
+                            DateOfBirth = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(9850),
+                            FullName = "test2",
+                            Gender = 2,
+                            GroupId = 1L,
+                            ParentId = 2L,
+                            RegisteredAt = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(9850)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Address = "test3",
+                            DateOfBirth = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(9852),
+                            FullName = "test3",
+                            Gender = 1,
+                            GroupId = 1L,
+                            ParentId = 2L,
+                            RegisteredAt = new DateTime(2023, 12, 11, 15, 16, 33, 577, DateTimeKind.Utc).AddTicks(9852)
+                        });
                 });
 
             modelBuilder.Entity("Kindergarten.Domain.Entities.Teachers.Teacher", b =>
@@ -207,23 +368,53 @@ namespace Kindergarten.Infrastructure.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Address = "test1",
+                            Email = "test1",
+                            FullName = "test1",
+                            PhoneNumber = "test1"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Address = "test2",
+                            Email = "test2",
+                            FullName = "test2",
+                            PhoneNumber = "test2"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Address = "test3",
+                            Email = "test3",
+                            FullName = "test3",
+                            PhoneNumber = "test3"
+                        });
                 });
 
             modelBuilder.Entity("GroupTeacher", b =>

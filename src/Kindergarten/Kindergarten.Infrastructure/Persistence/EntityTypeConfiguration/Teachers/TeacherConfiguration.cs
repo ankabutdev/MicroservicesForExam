@@ -18,7 +18,7 @@ public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
         builder.Property(t => t.PhoneNumber).HasMaxLength(20);
         builder.Property(t => t.Address).HasMaxLength(255);
 
-        builder.HasMany(t => t.Groups).WithMany(g => g.Teachers);
+        //builder.HasMany(t => t.Groups).WithMany(g => g.Teachers);
 
         builder.HasData(
             new Teacher
