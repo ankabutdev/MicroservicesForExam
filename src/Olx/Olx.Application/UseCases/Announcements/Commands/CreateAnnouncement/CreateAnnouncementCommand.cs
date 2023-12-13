@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace Olx.Application.UseCases.Announcements.Commands.CreateAnnouncement;
 
@@ -14,7 +15,7 @@ public class CreateAnnouncementCommand : IRequest<bool>
 
     public string Title { get; set; }
 
-    public string ImagePath { get; set; }
+    public IFormFile ImagePath { get; set; } = default!;
 
     public DateTime CreatedAt { get; set; }
 
