@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Olx.Application.Abstractions;
 
 namespace Olx.Application.UseCases.Categories.Commands.UpdateCategory;
@@ -15,8 +16,28 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
         _context = context;
     }
 
-    public Task<bool> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var categories = await _context.Categories
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+            if (categories is null)
+                throw new ArgumentNullException(nameof(categories));
+
+            _mapper.Map(request, categories);
+
+            _context.Categories.Update(categories);
+
+            var result = await _context
+                .SaveChangesAsync(cancellationToken);
+
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
