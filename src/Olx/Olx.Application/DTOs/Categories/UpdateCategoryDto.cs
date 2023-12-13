@@ -1,7 +1,10 @@
-﻿namespace Olx.Application.DTOs.Categories;
+﻿using System.Text.Json.Serialization;
+
+namespace Olx.Application.DTOs.Categories;
 
 public class UpdateCategoryDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string Name { get; set; }

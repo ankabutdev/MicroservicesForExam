@@ -1,3 +1,4 @@
+using JwtService.Core;
 using Kindergarten.Application;
 using Kindergarten.Infrastructure;
 
@@ -11,17 +12,17 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
-
+builder.Services.AddCustomJwtLayer();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI();
+//}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

@@ -1,3 +1,4 @@
+using JwtService.Core;
 using Nikoh.Application;
 using Nikoh.Infrastructure;
 
@@ -11,14 +12,15 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
+builder.Services.AddCustomJwtLayer();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI();
+//}
 
 //app.UseHttpsRedirection();
 app.UseAuthentication();

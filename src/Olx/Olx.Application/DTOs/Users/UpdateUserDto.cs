@@ -1,9 +1,11 @@
 ﻿using Olx.Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace Olx.Application.DTOs.Users;
 
 public class UpdateUserDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string FirstName { get; set; }

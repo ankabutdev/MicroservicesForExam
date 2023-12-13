@@ -17,7 +17,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<AuthenticationResponse?> Authenticate([FromBody] AuthenticationRequest authentication)
+    public ActionResult<AuthenticationResponse?> Authenticate(AuthenticationRequest authentication)
     {
         var result = _jwtTokenHandler.GenereteToken(authentication);
 

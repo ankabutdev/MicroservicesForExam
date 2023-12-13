@@ -1,4 +1,6 @@
-﻿namespace Olx.Application.DTOs.Announcements;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Olx.Application.DTOs.Announcements;
 
 public class CreateAnnouncementDto
 {
@@ -12,7 +14,7 @@ public class CreateAnnouncementDto
 
     public string Title { get; set; }
 
-    public string ImagePath { get; set; }
+    public IFormFile ImagePath { get; set; } = default!;
 
     public DateTime CreatedAt { get; set; }
 

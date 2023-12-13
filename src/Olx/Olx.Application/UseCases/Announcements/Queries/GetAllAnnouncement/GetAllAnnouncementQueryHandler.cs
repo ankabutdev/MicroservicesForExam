@@ -20,7 +20,6 @@ public class GetAllAnnouncementQueryHandler : IRequestHandler<GetAllAnnouncement
             .Announcements
             .Include(x => x.User)
             .ThenInclude(y => y.Announcements)
-            .ThenInclude(x => x.User)
             .ToListAsync(cancellationToken);
     }
 }

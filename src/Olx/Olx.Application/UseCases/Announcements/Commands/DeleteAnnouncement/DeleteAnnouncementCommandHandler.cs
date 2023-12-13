@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Olx.Application.Abstractions;
 
 namespace Olx.Application.UseCases.Announcements.Commands.DeleteAnnouncement;
@@ -15,8 +16,22 @@ public class DeleteAnnouncementCommandHandler : IRequestHandler<DeleteAnnounceme
         _context = context;
     }
 
-    public Task<bool> Handle(DeleteAnnouncementCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(DeleteAnnouncementCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        if (request.Id <= 0)
+            return false;
+
+        var announcement = await _context.Announcements
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+        if (announcement == null)
+            return false;
+
+        _context.Announcements.Remove(announcement);
+
+        var result = await _context
+            .SaveChangesAsync(cancellationToken);
+
+        return result > 0;
     }
 }

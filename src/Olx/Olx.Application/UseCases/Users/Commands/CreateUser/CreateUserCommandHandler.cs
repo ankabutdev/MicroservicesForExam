@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Olx.Application.Abstractions;
+using Olx.Domain.Entities;
 
 namespace Olx.Application.UseCases.Users.Commands.CreateUser;
 
@@ -15,8 +16,19 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
         _context = context;
     }
 
-    public Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var entity = _mapper.Map<User>(request);
+
+            await _context.Users.AddAsync(entity);
+            var result = await _context.SaveChangesAsync(cancellationToken);
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

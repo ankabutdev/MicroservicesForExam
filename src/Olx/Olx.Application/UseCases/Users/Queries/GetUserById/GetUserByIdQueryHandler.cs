@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Olx.Application.Abstractions;
 using Olx.Domain.Entities;
 
@@ -16,8 +17,11 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
         _mapper = mapper;
     }
 
-    public Task<User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+    public async Task<User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var result = await _context.Users
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+        return result ?? throw new Exception("User not found!");
     }
 }
