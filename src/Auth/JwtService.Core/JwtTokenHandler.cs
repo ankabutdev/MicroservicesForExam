@@ -9,7 +9,7 @@ namespace JwtService.Core;
 
 public class JwtTokenHandler
 {
-    public const string JWT_SECURITY_KEY = "UltraSecret7870ANIMEKEY";
+    public const string JWT_SECURITY_KEY = "UltraSecret7870ANIMEKEYYANAQOSHIMCHALAR";
     public const int JWT_TOKEN_VALIDITY_MINS = 10;
 
     private readonly List<UserAccount> _userAccountList;
