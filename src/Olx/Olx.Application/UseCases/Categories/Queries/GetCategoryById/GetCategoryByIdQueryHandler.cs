@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Olx.Application.Abstractions;
 using Olx.Domain.Entities;
 
@@ -17,8 +18,11 @@ public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery,
         _context = context;
     }
 
-    public Task<Category> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Category> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var result = await _context.Categories
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+        return result ?? throw new Exception("Category not found!");
     }
 }
