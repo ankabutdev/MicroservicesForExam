@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Olx.Application.Abstractions;
 
 namespace Olx.Application.UseCases.Announcements.Commands.UpdateAnnouncement;
@@ -15,8 +16,28 @@ public class UpdateAnnouncementCommandHandler : IRequestHandler<UpdateAnnounceme
         _mapper = mapper;
     }
 
-    public Task<bool> Handle(UpdateAnnouncementCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(UpdateAnnouncementCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var announcement = await _context.Announcements
+            .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+            if (announcement is null)
+                throw new ArgumentNullException(nameof(announcement));
+
+            _mapper.Map(request, announcement);
+
+            _context.Announcements.Update(announcement);
+
+            var result = await _context
+                .SaveChangesAsync(cancellationToken);
+
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
