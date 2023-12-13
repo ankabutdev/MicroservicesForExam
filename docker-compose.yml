@@ -85,6 +85,17 @@ services:
     networks:
      - backend
 
+  olx.api:
+    image: ${DOCKER_REGISTRY-}olxapi
+    build:
+      context: .
+      dockerfile: src/Olx/Olx.API/Dockerfile
+    networks:
+     - backend
+    depends_on:
+      - sqldata
+
 networks:
   backend:
+
 
