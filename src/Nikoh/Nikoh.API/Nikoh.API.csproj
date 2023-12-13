@@ -21,6 +21,7 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Auth\JwtService.Core\JwtService.Core.csproj" />
     <ProjectReference Include="..\Nikoh.Application\Nikoh.Application.csproj" />
     <ProjectReference Include="..\Nikoh.Infrastructure\Nikoh.Infrastructure.csproj" />
   </ItemGroup>
