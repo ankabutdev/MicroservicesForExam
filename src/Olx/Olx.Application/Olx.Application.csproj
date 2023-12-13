@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Olx.Domain\Olx.Domain.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
 </Project>
