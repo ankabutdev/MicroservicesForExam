@@ -1,7 +1,11 @@
-﻿namespace Olx.Application.DTOs.Announcements;
+﻿using Microsoft.AspNetCore.Http;
+using System.Text.Json.Serialization;
+
+namespace Olx.Application.DTOs.Announcements;
 
 public class UpdateAnnouncementDto
 {
+    [JsonIgnore]
     public long Id { get; set; }
 
     public string Name { get; set; }
@@ -14,7 +18,7 @@ public class UpdateAnnouncementDto
 
     public string Title { get; set; }
 
-    public string ImagePath { get; set; }
+    public IFormFile? ImagePath { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
