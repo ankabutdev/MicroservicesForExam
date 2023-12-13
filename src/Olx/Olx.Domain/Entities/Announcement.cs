@@ -18,7 +18,7 @@ public class Announcement
 
     public string ImagePath { get; set; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime UpdatedAt { get; set; }
 
