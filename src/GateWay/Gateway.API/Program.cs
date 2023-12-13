@@ -17,14 +17,12 @@ builder.Configuration
     .AddEnvironmentVariables();
 
 builder.Services.AddOcelot(builder.Configuration);
-builder.Services.AddCustomJwtLayer();
+//builder.Services.AddCustomJwtLayer();
 
 var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 await app.UseOcelot();
-
 app.Run();
