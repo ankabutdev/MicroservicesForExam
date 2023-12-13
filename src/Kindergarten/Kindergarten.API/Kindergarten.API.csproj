@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Auth\JwtService.Core\JwtService.Core.csproj" />
     <ProjectReference Include="..\Kindergarten.Application\Kindergarten.Application.csproj" />
     <ProjectReference Include="..\Kindergarten.Infrastructure\Kindergarten.Infrastructure.csproj" />
   </ItemGroup>
