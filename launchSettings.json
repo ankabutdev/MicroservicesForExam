@@ -8,7 +8,8 @@
         "kindergarten.api": "StartDebugging",
         "nikoh.api": "StartDebugging",
         "gateway.api": "StartDebugging",
-        "jwtservice.api": "StartDebugging"
+        "jwtservice.api": "StartDebugging",
+        "olx.api": "StartDebugging"
       }
     }
   }
