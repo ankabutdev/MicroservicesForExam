@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Olx.Application.Abstractions;
+using Olx.Domain.Entities;
 
 namespace Olx.Application.UseCases.Categories.Commands.CreateCategory;
 
@@ -15,8 +16,21 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
         _context = context;
     }
 
-    public Task<bool> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var entity = _mapper.Map<Category>(request);
+
+            await _context.Categories.AddAsync(entity);
+            var result = await _context
+                .SaveChangesAsync(cancellationToken);
+
+            return result > 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
