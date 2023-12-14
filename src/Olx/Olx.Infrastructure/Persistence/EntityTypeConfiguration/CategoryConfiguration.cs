@@ -15,8 +15,7 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
         builder.Property(c => c.UpdatedAt).IsRequired();
 
         builder.HasMany(c => c.Announcements)
-            .WithOne(a => a.Category)
-            .HasForeignKey(a => a.CategortId)
-            .OnDelete(DeleteBehavior.SetNull);
+                .WithOne(a => a.Category)
+                .HasForeignKey(a => a.CategoryId);
     }
 }
