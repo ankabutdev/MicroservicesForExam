@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Olx.Application.Abstractions;
+using Olx.Application.Interfaces.Files;
 
 namespace Olx.Application.UseCases.Announcements.Commands.DeleteAnnouncement;
 
@@ -9,11 +10,15 @@ public class DeleteAnnouncementCommandHandler : IRequestHandler<DeleteAnnounceme
 {
     private readonly IMapper _mapper;
     private readonly IAppDbContext _context;
+    private readonly IFileService _fileService;
 
-    public DeleteAnnouncementCommandHandler(IMapper mapper, IAppDbContext context)
+    public DeleteAnnouncementCommandHandler(IMapper mapper,
+        IAppDbContext context,
+        IFileService fileService)
     {
         _mapper = mapper;
         _context = context;
+        _fileService = fileService;
     }
 
     public async Task<bool> Handle(DeleteAnnouncementCommand request, CancellationToken cancellationToken)
@@ -26,6 +31,12 @@ public class DeleteAnnouncementCommandHandler : IRequestHandler<DeleteAnnounceme
 
         if (announcement == null)
             return false;
+
+        var imageResult = await _fileService
+            .DeleteImageAsync(announcement.ImagePath);
+
+        if (imageResult == false)
+            throw new Exception("Image fot found!");
 
         _context.Announcements.Remove(announcement);
 
