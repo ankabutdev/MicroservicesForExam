@@ -26,8 +26,9 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
             var result = await _context.SaveChangesAsync(cancellationToken);
             return result > 0;
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
             return false;
         }
     }
