@@ -32,6 +32,7 @@ public class CreateAnnouncementCommandHandler : IRequestHandler<CreateAnnounceme
 
             entity.ImagePath = imagePath;
 
+            entity.CreatedAt = DateTime.UtcNow;
             entity.UpdatedAt = DateTime.UtcNow;
 
             await _context.Announcements.AddAsync(entity, cancellationToken);
@@ -40,8 +41,9 @@ public class CreateAnnouncementCommandHandler : IRequestHandler<CreateAnnounceme
 
             return result > 0;
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
             return false;
         }
     }
