@@ -91,4 +91,47 @@ public class AdminTests
         // Verify that SaveChangesAsync was called with any CancellationToken
         dbContextMock.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
+
+    //[Fact]
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(-1)]
+    public async ValueTask ShouldReturnTrueWhenAdminDeleteIsValid(int Id)
+    {
+        var dbContextMock = new Mock<IApplicationDbContext>();
+
+
+        var command = new AdminDeleteCommand()
+        {
+            Id = Id
+        };
+
+        var handler = new AdminDeleteCommandHandler(dbContextMock.Object);
+
+        var result = await handler.Handle(command, CancellationToken.None);
+
+        // Assert
+        Assert.True(result);
+
+        dbContextMock
+            .Verify(x => x
+            .Admins
+            .FirstOrDefault(x => x
+            .Id == Id), Times.Once);
+
+        //Assert.False(dbContextMock.Object.Admins.FirstOrDefault(x => x.Id == Id)!.Id > 0, "fail");
+
+        dbContextMock
+            .Verify(x => x
+            .Admins
+            .Remove(It
+            .IsAny<Admin>()), Times.Once);
+
+        dbContextMock
+            .Verify(x => x
+            .SaveChangesAsync(It
+            .IsAny<CancellationToken>()), Times.Once);
+    }
 }
