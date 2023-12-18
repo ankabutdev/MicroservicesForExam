@@ -5,13 +5,14 @@ using GameClub.Application.UseCases.PlayerCases.Handlers.C;
 using GameClub.Domain.Entities;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Moq;
+using Shouldly;
 
 namespace GameClub.UnitTest.Services.Players;
 
 public class PlayerTests
 {
     [Fact]
-    public async ValueTask ShouldPlayerTrueWhenPlayerIsValid()
+    public async ValueTask ShouldReturnTrueWhenPlayerCreateIsValid()
     {
         // Arrange
         var command = new PlayerCreateCommand
@@ -50,9 +51,12 @@ public class PlayerTests
         // Act
         var result = await handler.Handle(command, CancellationToken.None);
 
+        result.ShouldBeOfType<Player>();
+
+        result.ShouldBeTrue();
+
         // Assert
         Assert.True(result);
-
     }
 
     [Fact]
@@ -86,6 +90,33 @@ public class PlayerTests
         dbContextMock.Verify(x => x.Players.Update(It.IsAny<Player>()), Times.Once);
 
         dbContextMock.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
+    }
 
+    [Fact]
+    public async ValueTask ShouldReturnTrueWhenPlayerDeleteIsValid()
+    {
+        var dbContextMock = new Mock<IApplicationDbContext>();
+
+        var command = new PlayerDeleteCommand
+        {
+            Id = 1,
+        };
+
+        var handler = new PlayerDeleteCommanHandler(dbContextMock.Object);
+
+        var result = await handler.Handle(command, CancellationToken.None);
+
+        Assert.True(result);
+
+        dbContextMock
+            .Verify(x => x
+            .Players
+            .FirstOrDefault(x => x
+            .Id == command.Id), Times.Once);
+
+        dbContextMock
+            .Verify(x => x
+            .SaveChangesAsync(It
+            .IsAny<CancellationToken>()), Times.Once);
     }
 }
