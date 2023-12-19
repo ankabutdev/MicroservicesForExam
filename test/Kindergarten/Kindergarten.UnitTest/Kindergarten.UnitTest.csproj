@@ -24,11 +24,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Employees\" />
     <Folder Include="Services\Groups\" />
     <Folder Include="Services\Teachers\" />
     <Folder Include="Services\Students\" />
     <Folder Include="Services\Parents\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Kindergarten\Kindergarten.Application\Kindergarten.Application.csproj" />
   </ItemGroup>
 
 </Project>
