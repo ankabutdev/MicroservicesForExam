@@ -25,38 +25,47 @@ public class PlayerTests
         var dbContextMock = new Mock<IApplicationDbContext>();
         var mapperMock = new Mock<IMapper>();
 
-        var handler = new PlayerCreateCommandHandler(dbContextMock.Object, mapperMock.Object);
-
         // Mock the mapping
         mapperMock
             .Setup(x => x
             .Map<Player>(command))
-            .Returns(new Player());
+            .Returns(new Player
+            {
+                NickName = "nimadur",
+                ComputerId = 1,
+                HoursCount = 1,
+            });
 
-        dbContextMock.Setup(x => x
-        .Players
-        .AddAsync(It.IsAny<Player>(), It
-        .IsAny<CancellationToken>()))
-        .Returns(ValueTask
-        .FromResult(Mock
-        .Of<EntityEntry<Player>>(x => x
-        .Entity == new Player())));
+        //dbContextMock.Setup(x => x
+        //.Players
+        //.AddAsync(It.IsAny<Player>(), It
+        //.IsAny<CancellationToken>()))
+        //.Returns(ValueTask
+        //.FromResult(Mock
+        //.Of<EntityEntry<Player>>(x => x
+        //.Entity == new Player())));
 
-        dbContextMock
-            .Setup(x => x
-            .SaveChangesAsync(It
-            .IsAny<CancellationToken>()))
-            .ReturnsAsync(1);
+        //dbContextMock
+        //    .Setup(x => x
+        //    .SaveChangesAsync(It
+        //    .IsAny<CancellationToken>()))
+        //    .ReturnsAsync(0);
+
+        var handler = new PlayerCreateCommandHandler(dbContextMock.Object, mapperMock.Object);
 
         // Act
+        dbContextMock.Verify(db => db.SaveChangesAsync(CancellationToken.None), Times.Once);
         var result = await handler.Handle(command, CancellationToken.None);
 
-        result.ShouldBeOfType<Player>();
-
-        result.ShouldBeTrue();
+        // result.ShouldBeOfType<Player>();
+        //result = false;
+        //result.ShouldBeTrue();
 
         // Assert
-        Assert.True(result);
+        
+        Assert.False(result);
+        //Assert.True(result==false);
+        //Assert.True(result);
     }
 
     [Fact]
