@@ -11,7 +11,7 @@ public class Announcement
 
     public string Description { get; set; }
 
-    public long CategortId { get; set; }
+    public long CategoryId { get; set; }
     public Category Category { get; set; }
 
     public string Title { get; set; }

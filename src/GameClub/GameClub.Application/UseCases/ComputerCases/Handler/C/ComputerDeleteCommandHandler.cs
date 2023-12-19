@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using GameClub.Application.Abstractions;
+﻿using GameClub.Application.Abstractions;
 using GameClub.Application.UseCases.ComputerCases.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +9,7 @@ public class ComputerDeleteCommandHandler : IRequestHandler<ComputerDeleteComman
 {
     private readonly IApplicationDbContext _context;
 
-    public ComputerDeleteCommandHandler(IApplicationDbContext context,
-        IMapper mapper)
+    public ComputerDeleteCommandHandler(IApplicationDbContext context)
     {
         _context = context;
     }

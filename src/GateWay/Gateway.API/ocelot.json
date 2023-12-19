@@ -337,6 +337,81 @@
       ],
       "UpstreamPathTemplate": "/requirements",
       "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Olx.API
+      "DownstreamPathTemplate": "/api/announcements/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "olx.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/announcements/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/announcements",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "olx.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/announcements",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Olx.API
+      "DownstreamPathTemplate": "/api/categories/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "olx.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/categories/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "olx.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/categories",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      // Olx.API
+      "DownstreamPathTemplate": "/api/users/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "olx.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/users/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/users",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "olx.api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/users",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
     }
   ],
   "GlobalConfiguration": {

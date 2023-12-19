@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace Olx.Application.UseCases.Announcements.Commands.UpdateAnnouncement;
 
@@ -12,11 +13,11 @@ public class UpdateAnnouncementCommand : IRequest<bool>
 
     public string Description { get; set; }
 
-    public long CategortId { get; set; }
+    public long CategoryId { get; set; }
 
     public string Title { get; set; }
 
-    public string ImagePath { get; set; }
+    public IFormFile? ImagePath { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

@@ -12,7 +12,7 @@ using Olx.Infrastructure.Persistence;
 namespace Olx.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231212193140_initial")]
+    [Migration("20231214151319_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace Olx.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("CategortId")
+                    b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedAt")
@@ -63,7 +63,7 @@ namespace Olx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategortId");
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -141,8 +141,8 @@ namespace Olx.Infrastructure.Migrations
                 {
                     b.HasOne("Olx.Domain.Entities.Category", "Category")
                         .WithMany("Announcements")
-                        .HasForeignKey("CategortId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Olx.Domain.Entities.User", "User")

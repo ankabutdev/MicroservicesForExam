@@ -19,7 +19,7 @@ public class GetAllAnnouncementQueryHandler : IRequestHandler<GetAllAnnouncement
         return await _context
             .Announcements
             .Include(x => x.User)
-            .ThenInclude(y => y.Announcements)
+            //.ThenInclude(y => y.Announcements)
             .ToListAsync(cancellationToken);
     }
 }

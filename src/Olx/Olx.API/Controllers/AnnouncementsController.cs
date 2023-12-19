@@ -42,7 +42,7 @@ public class AnnouncementsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(CreateAnnouncementDto dto)
+    public async Task<IActionResult> CreateAsync([FromForm] CreateAnnouncementDto dto)
     {
         var announcement = _mapper.Map<CreateAnnouncementCommand>(dto);
         var result = await _mediator.Send(announcement);

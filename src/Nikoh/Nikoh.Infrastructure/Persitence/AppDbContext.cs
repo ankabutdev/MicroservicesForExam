@@ -46,8 +46,8 @@ public class AppDbContext : DbContext, IAppDbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        modelBuilder.ApplyConfiguration<Marriage>(new MarriageConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        //modelBuilder.ApplyConfiguration<Marriage>(new MarriageConfiguration());
     }
 
     async ValueTask<int> IAppDbContext.SaveChangesAsync(CancellationToken cancellationToken)
