@@ -23,6 +23,9 @@ public class CreateEmpCmdHandler : IRequestHandler<EmpCreateCmd, bool>
         {
             Employee? entity = _mapper.Map<Employee>(request);
 
+            if (entity is null)
+                return false;
+
             await _context.Employees.AddAsync(entity, cancellationToken);
             var result = await _context.SaveChangesAsync(cancellationToken);
             return result > 0;
