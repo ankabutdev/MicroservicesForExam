@@ -1,18 +1,31 @@
-﻿using AutoMapper;
-using Kindergarten.Application.Abstractions;
+﻿using Kindergarten.Application.Abstractions;
+using Kindergarten.Application.Mappers;
 using Kindergarten.Application.UseCases.EmpoloyeeCase.Commands;
 using Kindergarten.Application.UseCases.EmpoloyeeCase.Handlers.C;
 using Kindergarten.Domain.Entities.Employees;
 using Kindergarten.Domain.Enums;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Moq;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Kindergarten.UnitTest.Services.Employees;
 
 public class EmployeeTests
 {
+    private readonly IMapper _mapper;
+    private Mock<IAppDbContext> _dbContextMock;
+
+    public EmployeeTests()
+    {
+        _dbContextMock = new Mock<IAppDbContext>();
+        var config = new MapperConfiguration(config =>
+        {
+            config.AddProfile<MappingConfiguration>();
+        });
+        _mapper = config.CreateMapper();
+    }
+
     [Fact]
-    public async Task ShouldReturnFalseWhenEmployeeCreateIsInvalid()
+    public async Task ShouldReturnTrueWhenEmployeeCreateIsValid()
     {
         // Arrange
         var command = new EmpCreateCmd
@@ -23,24 +36,14 @@ public class EmployeeTests
             PhoneNumber = "1234567890",
         };
 
-        var dbContextMock = new Mock<IAppDbContext>();
-        var mapperMock = new Mock<IMapper>();
-
-        // Mock the mapping
-        mapperMock
-            .Setup(x => x.Map<Employee>(command))
-            .Returns(new Employee());
-
         // Mock Add method
-        dbContextMock.Setup(x => x.Employees.Add(It.IsAny<Employee>()))
-            .Returns(Mock.Of<EntityEntry<Employee>>(_ => _.Entity == new Employee()));
+        _dbContextMock.Setup(x => x.Employees.AddAsync(It.IsAny<Employee>(), CancellationToken.None));
 
         // Mock SaveChangesAsync method
-        dbContextMock.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+        _dbContextMock.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
 
-
-        var handler = new CreateEmpCmdHandler(dbContextMock.Object, mapperMock.Object);
+        var handler = new CreateEmpCmdHandler(_dbContextMock.Object, _mapper);
 
         // Act
         var result = await handler.Handle(command, CancellationToken.None);
@@ -50,7 +53,7 @@ public class EmployeeTests
     }
 
     [Fact]
-    public async ValueTask ShouldReturnTrueWhenEmployeeUpdateIsValid()
+    public async Task ShouldReturnTrueWhenEmployeeUpdateIsValid()
     {
         // Arrange
         var command = new EmpUpdateCmd
@@ -62,47 +65,38 @@ public class EmployeeTests
             PhoneNumber = "1234567890"
         };
 
-        var dbContextMock = new Mock<IAppDbContext>();
-        var mapperMock = new Mock<IMapper>();
+        _dbContextMock.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(1);
 
-        //mapperMock.Setup(x => x
-        //.Map<Employee>(command))
-        //.Returns(new Employee());
+        var handler = new UpdateEmpCmdHandler(_dbContextMock.Object, _mapper);
 
-        mapperMock.Verify(x => x.Map<Employee>(command), Times.Once);
-        dbContextMock.Verify(x => x.Employees.Update(It.IsAny<Employee>()), Times.Once);
-        dbContextMock.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
-
-        var handler = new UpdateEmpCmdHandler(dbContextMock.Object, mapperMock.Object);
         // Act
         var result = await handler.Handle(command, CancellationToken.None);
 
-        // Assert 
+        // Assert
         Assert.True(result);
     }
 
     [Fact]
-    public async ValueTask ShouldReturnTrueWhenEmployeeDeleteIsValid()
+    public async Task ShouldReturnTrueWhenEmployeeDeleteIsValid()
     {
-        var dbContextMock = new Mock<IAppDbContext>();
-
         var command = new EmpDeleteCmd
         {
             Id = 1
         };
 
-        dbContextMock
-            .Verify(x => x
-            .Employees
-            .FirstOrDefault(x => x
-            .Id == command.Id), Times.Once);
+        _dbContextMock
+            .Setup(x => x.Employees.FirstOrDefaultAsync(It
+            .IsAny<Expression<Func<Employee, bool>>>(), It
+            .IsAny<CancellationToken>()))
+            .ReturnsAsync(new Employee());
 
-        dbContextMock
-            .Verify(x => x
-            .SaveChangesAsync(It
-            .IsAny<CancellationToken>()), Times.Once);
+        _dbContextMock
+            .Setup(x => x.SaveChangesAsync(It
+            .IsAny<CancellationToken>()))
+            .ReturnsAsync(It.IsAny<int>());
 
-        var handler = new DeleteEmpCmdHandler(dbContextMock.Object);
+        var handler = new DeleteEmpCmdHandler(_dbContextMock.Object);
 
         var result = await handler.Handle(command, CancellationToken.None);
 
