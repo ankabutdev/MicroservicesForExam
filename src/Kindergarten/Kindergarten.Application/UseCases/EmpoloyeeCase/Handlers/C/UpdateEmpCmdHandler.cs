@@ -22,7 +22,7 @@ public class UpdateEmpCmdHandler : IRequestHandler<EmpUpdateCmd, bool>
         try
         {
             var emp = await _context.Employees
-            .FirstOrDefaultAsync(x => x.Id == request.Id);
+            .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             if (emp is null)
                 throw new ArgumentNullException(nameof(emp));

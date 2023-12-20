@@ -1,5 +1,4 @@
-﻿using NIkoh.Domain.Entities.Marriages;
-using NIkoh.Domain.Enums;
+﻿using NIkoh.Domain.Enums;
 
 namespace NIkoh.Domain.Entities.Persons;
 

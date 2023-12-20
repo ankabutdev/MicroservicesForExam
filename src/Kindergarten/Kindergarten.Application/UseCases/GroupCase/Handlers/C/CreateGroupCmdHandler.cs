@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Kindergarten.Application.Abstractions;
 using Kindergarten.Application.UseCases.GroupCase.Commands;
-using Kindergarten.Domain.Entities.Employees;
 using Kindergarten.Domain.Entities.Groups;
 using MediatR;
 

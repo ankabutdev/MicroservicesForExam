@@ -1,5 +1,4 @@
 using Gateway.API;
-using JwtService.Core;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 

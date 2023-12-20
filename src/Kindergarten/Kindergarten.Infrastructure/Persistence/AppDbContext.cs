@@ -14,8 +14,13 @@ namespace Kindergarten.Infrastructure.Persistence;
 
 public class AppDbContext : DbContext, IAppDbContext
 {
+    public AppDbContext()
+    {
+
+    }
+
     public AppDbContext(DbContextOptions<AppDbContext> options)
-       : base(options) 
+       : base(options)
     {
         var databaseCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
         try

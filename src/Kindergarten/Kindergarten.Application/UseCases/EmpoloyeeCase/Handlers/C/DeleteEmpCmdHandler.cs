@@ -25,6 +25,7 @@ public class DeleteEmpCmdHandler : IRequestHandler<EmpDeleteCmd, bool>
 
         if (emp == null)
             return false;
+
         _context.Employees.Remove(emp);
 
         var result = await _context
