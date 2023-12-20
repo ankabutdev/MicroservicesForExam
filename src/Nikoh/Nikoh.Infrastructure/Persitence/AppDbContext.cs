@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Nikoh.Application.Abstractions;
-using Nikoh.Infrastructure.Persitence.EntityTypeConfiguration;
 using NIkoh.Domain.Entities.Marriages;
 using NIkoh.Domain.Entities.Persons;
 using NIkoh.Domain.Entities.Requirements;
