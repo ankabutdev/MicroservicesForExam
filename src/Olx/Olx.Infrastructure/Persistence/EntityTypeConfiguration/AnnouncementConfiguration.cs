@@ -18,12 +18,12 @@ public class AnnouncementConfiguration : IEntityTypeConfiguration<Announcement>
         builder.Property(a => a.CreatedAt).IsRequired();
         builder.Property(a => a.UpdatedAt).IsRequired();
 
-       builder.HasOne(a => a.User)
-                .WithMany(u => u.Announcements)
-                .HasForeignKey(a => a.UserId);
+        builder.HasOne(a => a.User)
+                 .WithMany(u => u.Announcements)
+                 .HasForeignKey(a => a.UserId);
 
-            builder.HasOne(a => a.Category)
-                .WithMany(c => c.Announcements)
-                .HasForeignKey(a => a.CategoryId);
+        builder.HasOne(a => a.Category)
+            .WithMany(c => c.Announcements)
+            .HasForeignKey(a => a.CategoryId);
     }
 }
