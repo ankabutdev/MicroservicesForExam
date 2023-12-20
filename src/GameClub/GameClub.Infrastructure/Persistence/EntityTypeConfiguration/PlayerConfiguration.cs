@@ -45,6 +45,6 @@ public class PlayerConfiguration : IEntityTypeConfiguration<Player>
                 EndDate = DateTime.UtcNow,
                 HoursCount = 1,
                 ComputerId = 2,
-            }) ;
+            });
     }
 }
