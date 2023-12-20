@@ -3,9 +3,7 @@ using GameClub.Application.Abstractions;
 using GameClub.Application.UseCases.PlayerCases.Commands;
 using GameClub.Application.UseCases.PlayerCases.Handlers.C;
 using GameClub.Domain.Entities;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Moq;
-using Shouldly;
 
 namespace GameClub.UnitTest.Services.Players;
 
@@ -62,7 +60,7 @@ public class PlayerTests
         //result.ShouldBeTrue();
 
         // Assert
-        
+
         Assert.False(result);
         //Assert.True(result==false);
         //Assert.True(result);
