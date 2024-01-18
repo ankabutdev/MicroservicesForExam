@@ -39,8 +39,6 @@ public class UpdateAnnouncementCommandHandler : IRequestHandler<UpdateAnnounceme
                 announcement.ImagePath = newImagePath;
             }
 
-
-
             _mapper.Map(request, announcement);
 
             _context.Announcements.Update(announcement);
